@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Consulting — Brandon Poplstein | Implement AI into Product, Ops & CX</title>
+<meta name="description" content="Brandon Poplstein helps organizations build AI into the workflows that run product, operations, and customer support & success teams — past the hype, into real ROI." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0A0A0C; --bg-2:#0E0E10; --panel:#141416; --panel-2:#1C1C1E; --panel-3:#202022;
+    --ink:#F5F5F7; --muted:#ABADAE; --muted-2:#8E8E90; --line:rgba(245,245,247,.08);
+    --brand:#3EDE6F; --brand-2:#21B873; --brand-lt:#6DF79A; --accent:#3EDE6F;
+    --grad:linear-gradient(135deg,#6DF79A 0%,#3EDE6F 55%,#21B873 100%);
+    --ink-on-green:#06140B; --radius:18px; --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;background:#0A0A0C}
+  body{background:var(--bg);color:var(--ink);overflow-x:clip;scroll-padding-top:72px;scroll-behavior:smooth;
+    font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;position:relative;}
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:rgba(62,222,111,.26);color:#fff}
+  html{scrollbar-color:#2c2d30 var(--bg);scrollbar-width:thin}
+  ::-webkit-scrollbar{width:11px;height:11px}::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:#2c2d30;border-radius:99px;border:3px solid var(--bg)}
+  ::-webkit-scrollbar-thumb:hover{background:var(--brand-2)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:8px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700;color:var(--brand)}
+  .grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;transition:.22s cubic-bezier(.2,.7,.2,1);cursor:pointer;border:0;white-space:nowrap}
+  .btn-primary{background:var(--brand);color:var(--ink-on-green);font-weight:800;box-shadow:0 8px 28px rgba(62,222,111,.28)}
+  .btn-primary:hover{transform:translateY(-2px);background:var(--brand-lt);box-shadow:0 16px 44px rgba(62,222,111,.5)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,.02)}
+  .btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:rgba(62,222,111,.06)}
+  section{padding:94px 0;position:relative}
+  h2.section-title{font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-.025em;line-height:1.06}
+  .section-sub{color:var(--muted);font-size:18px;margin-top:16px;max-width:680px}
+  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:var(--grad);box-shadow:0 0 12px rgba(62,222,111,.6);transition:width .1s linear}
+
+  /* NAV */
+  header{position:sticky;top:0;z-index:60;background:#000;border-bottom:1px solid transparent;transition:.3s}
+  header.scrolled{border-bottom:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.5)}
+  .site-nav{display:flex;align-items:center;justify-content:space-between;height:52px}
+  .site-brand{font-weight:800;font-size:16px;letter-spacing:-.01em;color:var(--ink);display:flex;align-items:center;gap:9px;white-space:nowrap}
+  .site-brand .bdot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 8px var(--brand);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
+  .site-links{display:flex;gap:28px;align-items:center}
+  .site-links a{font-size:14px;font-weight:600;color:var(--muted);transition:.2s}
+  .site-links a:hover{color:var(--ink)}.site-links a.active{color:var(--brand)}
+  @media(max-width:560px){.site-links{gap:18px}.site-links a{font-size:13px}.site-brand{font-size:15px}}
+
+  /* AURORA + GRID */
+  .aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.42;will-change:transform}
+  .b1{width:560px;height:560px;background:radial-gradient(circle,#3EDE6F,transparent 65%);top:-220px;left:-100px;animation:drift1 18s ease-in-out infinite}
+  .b2{width:460px;height:460px;background:radial-gradient(circle,#21B873,transparent 62%);top:-140px;right:-80px;opacity:.36;animation:drift2 22s ease-in-out infinite}
+  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,40px) scale(1.1)}}
+  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,40px) scale(1.08)}}
+  .dotgrid{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(245,245,247,.06) 1px,transparent 1px);background-size:32px 32px;-webkit-mask:radial-gradient(120% 80% at 50% 0%,#000,transparent 75%);mask:radial-gradient(120% 80% at 50% 0%,#000,transparent 75%)}
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* HERO */
+  .hero{padding:80px 0 60px;overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
+  @media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+  .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(62,222,111,.06);font-size:13px;font-weight:600;color:var(--brand-lt);margin-bottom:24px}
+  .hero-badge .pdot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 0 rgba(62,222,111,.6);animation:ping 2s infinite}
+  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(62,222,111,.5)}70%{box-shadow:0 0 0 10px rgba(62,222,111,0)}100%{box-shadow:0 0 0 0 rgba(62,222,111,0)}}
+  .hero h1{font-size:clamp(38px,5.2vw,62px);font-weight:900;letter-spacing:-.035em;line-height:1.04}
+  .hero p.lead{color:var(--muted);font-size:clamp(17px,2vw,20px);max-width:560px;margin:22px 0 32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-meta{display:flex;align-items:center;gap:12px;margin-top:34px;color:var(--muted);font-size:14px}
+  .hero-meta .av{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 14%;border:1.5px solid rgba(62,222,111,.5)}
+  .hero-meta b{color:var(--ink)}
+  /* opportunity map card */
+  .map-card{background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(135deg,rgba(62,222,111,.5),rgba(33,184,115,.1)) border-box;border:1.5px solid transparent;border-radius:20px;padding:26px;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 60px rgba(62,222,111,.06)}
+  .map-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .map-head .t{font-weight:800;font-size:16px}
+  .map-head .t small{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
+  .map-live{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:rgba(62,222,111,.1);border:1px solid rgba(62,222,111,.25);padding:5px 10px;border-radius:999px}
+  .map-row{padding:14px 0;border-bottom:1px solid var(--line)}
+  .map-row:last-child{border-bottom:0}
+  .map-row .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+  .map-row .lbl{font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px}
+  .map-row .lbl .dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+  .map-row .imp{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand)}
+  .map-row .op{font-size:12.5px;color:var(--muted);margin-bottom:9px}
+  .map-bar{height:7px;border-radius:99px;background:#202022;overflow:hidden}
+  .map-bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--grad);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+
+  /* CREDIBILITY STRIP */
+  .creds{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);padding:26px 0}
+  .creds-row{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:center}
+  .cred{display:flex;align-items:center;gap:9px;color:#cfd1d3;font-size:14px;font-weight:600;white-space:nowrap}
+  .cred svg{color:var(--brand);flex-shrink:0}
+
+  /* SHIFT (problem vs delivered) */
+  .shift-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:50px}
+  @media(max-width:780px){.shift-grid{grid-template-columns:1fr}}
+  .shift-card{border-radius:var(--radius);padding:30px;border:1px solid var(--line)}
+  .shift-card.bad{background:var(--panel)}
+  .shift-card.good{background:radial-gradient(120% 90% at 100% 0%,rgba(62,222,111,.09),transparent 55%),var(--panel-2);border-color:rgba(62,222,111,.3)}
+  .shift-card h3{font-size:14px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;font-weight:800}
+  .shift-card.bad h3{color:var(--muted-2)}.shift-card.good h3{color:var(--brand)}
+  .shift-card ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .shift-card li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#d4d6d8}
+  .shift-card li svg{flex-shrink:0;margin-top:3px}
+  .shift-card.bad li svg{color:#6b6c6e}.shift-card.good li svg{color:var(--brand)}
+
+  /* TEAM SELECTOR (centerpiece) */
+  .teams{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:44px}
+  .tab{display:flex;align-items:center;gap:11px;padding:16px 20px;border-radius:14px;background:var(--panel);border:1px solid var(--line);cursor:pointer;transition:.25s;flex:1;min-width:230px;text-align:left;color:var(--ink);font-family:inherit}
+  .tab:hover{border-color:rgba(62,222,111,.4)}
+  .tab.active{border-color:transparent;background:linear-gradient(var(--panel-2),var(--panel-2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 14px 34px rgba(62,222,111,.14)}
+  .tab .ti{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,rgba(62,222,111,.2),rgba(33,184,115,.1));border:1px solid rgba(62,222,111,.3);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
+  .tab .tt{font-weight:800;font-size:15.5px;letter-spacing:-.01em}
+  .tab .ts{font-size:12px;color:var(--muted);margin-top:2px}
+  .panel-wrap{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:38px;min-height:340px;position:relative;overflow:hidden}
+  .panel{display:none;animation:fadeUp .5s cubic-bezier(.2,.7,.2,1)}
+  .panel.show{display:block}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  .panel-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+  @media(max-width:820px){.panel-grid{grid-template-columns:1fr;gap:26px}}
+  .panel h3{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.02em;line-height:1.1}
+  .panel .psub{color:var(--muted);font-size:16px;margin-top:12px}
+  .panel .outcome{margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:rgba(62,222,111,.08);border:1px solid rgba(62,222,111,.22);border-radius:12px;padding:13px 16px;font-size:14.5px;color:var(--brand-lt);font-weight:600}
+  .uc{list-style:none;display:flex;flex-direction:column;gap:14px}
+  .uc li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;color:#d8dadc;line-height:1.45}
+  .uc li .ck{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.28);display:flex;align-items:center;justify-content:center;color:var(--brand);margin-top:1px}
+
+  /* ESTIMATOR */
+  .est{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:46px;background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+  @media(max-width:820px){.est{grid-template-columns:1fr}}
+  .est-controls{padding:36px}
+  .est-result{padding:36px;background:radial-gradient(130% 100% at 100% 0%,rgba(62,222,111,.1),transparent 60%),var(--panel-2);border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
+  @media(max-width:820px){.est-result{border-left:0;border-top:1px solid var(--line)}}
+  .est-controls h4{font-size:13px;color:var(--brand);text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:8px}
+  .seg{display:flex;gap:8px;margin:8px 0 28px}
+  .seg button{flex:1;padding:12px 8px;border-radius:11px;background:var(--bg);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13px;cursor:pointer;transition:.2s;font-family:inherit}
+  .seg button:hover{border-color:rgba(62,222,111,.4)}
+  .seg button.on{background:rgba(62,222,111,.1);border-color:var(--brand);color:var(--brand)}
+  .est-label{font-size:14px;color:var(--muted);font-weight:600;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
+  .est-label b{color:var(--brand);font-size:17px;font-weight:900}
+  .est-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;background:#202022;outline:none;cursor:pointer}
+  .est-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 0 0 4px rgba(62,222,111,.18),0 2px 8px rgba(0,0,0,.4)}
+  .est-range::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 0 0 4px rgba(62,222,111,.18)}
+  .est-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-2);margin-top:8px}
+  .est-note{font-size:12px;color:var(--muted-2);margin-top:26px;line-height:1.55}
+  .est-cap{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:800;margin-bottom:8px}
+  .est-big{font-size:clamp(48px,7vw,76px);font-weight:900;letter-spacing:-.04em;line-height:.95}
+  .est-big small{font-size:18px;color:var(--muted);font-weight:600;letter-spacing:0}
+  .est-subs{display:flex;gap:28px;margin:22px 0 26px;flex-wrap:wrap}
+  .est-subs .v{font-size:25px;font-weight:900;letter-spacing:-.02em}
+  .est-subs .l{font-size:12px;color:var(--muted);margin-top:2px}
+  .est-result .btn{align-self:flex-start}
+  @media(max-width:820px){.est-result .btn{align-self:stretch;justify-content:center}}
+
+  /* WHAT YOU GET FROM THE CALL */
+  .call-get{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:4px 0 30px}
+  .call-get .g{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-size:14px;color:#d4d6d8;font-weight:600}
+  .call-get .g svg{color:var(--brand);flex-shrink:0}
+
+  /* PROCESS */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px;counter-reset:s}
+  @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
+  @media(max-width:520px){.steps{grid-template-columns:1fr}}
+  .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 24px;transition:.3s}
+  .step:hover{transform:translateY(-5px);border-color:rgba(62,222,111,.3)}
+  .step .num{font-size:13px;font-weight:900;color:var(--ink-on-green);background:var(--brand);width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .step h4{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
+  .step p{color:var(--muted);font-size:14px}
+
+  /* DELIVERABLES */
+  .deliver{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+  @media(max-width:820px){.del-grid{grid-template-columns:1fr}}
+  .del{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;gap:14px;align-items:flex-start;transition:.3s}
+  .del:hover{border-color:rgba(62,222,111,.3);transform:translateY(-4px)}
+  .del .ck{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.28);display:flex;align-items:center;justify-content:center;color:var(--brand)}
+  .del b{font-size:16px;font-weight:800;display:block;margin-bottom:5px}
+  .del p{color:var(--muted);font-size:14px}
+
+  /* WHY ME */
+  .why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;margin-top:20px}
+  @media(max-width:840px){.why-grid{grid-template-columns:1fr;gap:36px;justify-items:center;text-align:center}}
+  .why-photo{position:relative;width:300px;height:300px;border-radius:24px;overflow:hidden;border:1.5px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--grad) border-box;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(62,222,111,.14)}
+  .why-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
+  .why h2{font-size:clamp(28px,3.6vw,40px);font-weight:900;letter-spacing:-.02em;line-height:1.1}
+  .why p{color:#cdcfd1;font-size:16.5px;margin-top:18px}
+  .why p b{color:var(--ink)}
+  .why .sig{margin-top:22px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px;justify-content:inherit}
+  @media(max-width:840px){.why .sig{justify-content:center}}
+
+  /* ENGAGEMENTS */
+  .eng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+  @media(max-width:880px){.eng-grid{grid-template-columns:1fr}}
+  .eng{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;transition:.3s}
+  .eng:hover{transform:translateY(-5px);border-color:rgba(62,222,111,.35)}
+  .eng.feat{background:linear-gradient(var(--panel-2),var(--panel-2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 30px 70px rgba(62,222,111,.12)}
+  .eng .tag{position:absolute;top:-12px;left:28px;background:var(--grad);color:var(--ink-on-green);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .eng .en{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:800}
+  .eng .eh{font-size:21px;font-weight:900;margin:6px 0 10px;letter-spacing:-.01em}
+  .eng p{color:var(--muted);font-size:14.5px;flex:1}
+  .eng .ef{margin-top:20px;font-size:13px;color:var(--muted-2)}
+  .eng .btn{margin-top:20px;width:100%;justify-content:center}
+
+  /* FAQ */
+  .faq{max-width:820px;margin:48px auto 0}
+  .qa{border-bottom:1px solid var(--line)}
+  .qa button{width:100%;text-align:left;background:none;border:0;color:var(--ink);font-family:inherit;font-size:17px;font-weight:700;padding:22px 0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .qa .ic{flex-shrink:0;width:26px;height:26px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--brand);transition:.3s;font-size:18px;line-height:1}
+  .qa.open .ic{background:var(--brand);color:var(--ink-on-green);border-color:var(--brand);transform:rotate(45deg)}
+  .qa .ans{max-height:0;overflow:hidden;transition:max-height .35s ease}
+  .qa .ans p{color:var(--muted);font-size:15.5px;padding:0 0 22px}
+
+  /* FINAL */
+  .final{text-align:center;overflow:hidden}
+  .final h2{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.03em;line-height:1.04}
+  .final p{color:var(--muted);font-size:19px;margin:18px auto 34px;max-width:600px}
+
+  footer{border-top:1px solid var(--line);padding:42px 0;color:var(--muted);font-size:14px}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
+  .foot-links{display:flex;gap:22px}.foot-links a:hover{color:var(--brand)}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+  /* animated BP lockup (logo) */
+  .bp-lockup{display:block;flex-shrink:0;overflow:visible;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
+  header .bp-lockup{height:38px}
+  footer .bp-lockup{height:44px}
+  .bp-halo{transform-box:fill-box;transform-origin:center;filter:blur(5px);animation:bpHalo 3s ease-in-out infinite}
+  .bp-glow{transform-box:fill-box;transform-origin:center;filter:blur(1.7px);animation:bpGlow 3s ease-in-out infinite}
+  .bp-rip{transform-box:fill-box;transform-origin:center;animation:bpRip 3s cubic-bezier(.2,0,0,1) infinite}
+  .bp-rip2{animation-delay:1.5s}
+  .bp-node{transform-box:fill-box;transform-origin:center;animation:bpNode 3s ease-in-out infinite}
+  @keyframes bpHalo{0%,100%{opacity:.16;transform:scale(.92)}50%{opacity:.5;transform:scale(1.18)}}
+  @keyframes bpGlow{0%,100%{opacity:.35}50%{opacity:.9}}
+  @keyframes bpRip{0%{opacity:.5;transform:scale(1)}100%{opacity:0;transform:scale(2.5)}}
+  @keyframes bpNode{0%,100%{opacity:1}50%{opacity:.78}}
+  @media(prefers-reduced-motion:reduce){.bp-halo,.bp-glow,.bp-rip,.bp-node{animation:none}.bp-halo{opacity:.32}}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header id="hdr">
+  <div class="wrap site-nav">
+    <a href="index.html" class="site-brand"><svg class="bp-lockup" viewBox="0 13 340 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brandon Poplstein, AI Thought Leader"><g transform="translate(10,16)"><circle class="bp-halo" cx="22.5" cy="33.5" r="11.5" fill="#3EDE6F"></circle><circle class="bp-rip" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="1.3"></circle><circle class="bp-rip bp-rip2" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="1.3"></circle><circle class="bp-glow" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="5"></circle><path d="M13 4 V44" stroke="#F5F5F7" stroke-width="5" stroke-linecap="round"></path><path d="M13 4 H23 A10 10 0 0 1 23 24 H13" stroke="#F5F5F7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path><circle class="bp-node" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="5"></circle></g><line x1="68" y1="26" x2="68" y2="54" stroke="#2a2a2c" stroke-width="1"></line><text x="84" y="40" font-size="23" font-weight="600" letter-spacing="-0.5" fill="#F5F5F7">Brandon Poplstein</text><text x="85" y="59" font-size="10.5" font-weight="600" letter-spacing="2.2" fill="#3EDE6F">AI THOUGHT LEADER</text></svg></a>
+    <nav class="site-links">
+      <a href="index.html">About</a>
+      <a href="salesai.html">SalesAi</a>
+      <a href="consulting.html" class="active">Consulting</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="dotgrid"></div>
+  <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge"><span class="pdot"></span> AI Implementation &amp; Advisory</div>
+        <h1>Make AI the engine behind your <span class="grad-text">product, operations, and customer teams.</span></h1>
+        <p class="lead">Most AI dies in the pilot. I build it into the workflows that actually run your business, so your teams move faster, your customers feel it, and the ROI is undeniable.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Book a strategy call &nbsp;&rarr;</a>
+          <a href="#teams" class="btn btn-ghost">See where I help</a>
+        </div>
+        <div class="hero-meta">
+          <img class="av" src="assets/brandon-headshot.png" alt="Brandon Poplstein" />
+          <div>Brandon Poplstein · <b>Co-Founder, SalesAi</b> &amp; AI Product Leader</div>
+        </div>
+      </div>
+      <div>
+        <div class="map-card" id="mapCard">
+          <div class="map-head"><div class="t">AI Opportunity Map<small>What we map in week one</small></div><span class="map-live">Live</span></div>
+          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>Product</span><span class="imp">High impact</span></div><div class="op">Ship AI features users actually adopt</div><div class="map-bar"><i data-w="92"></i></div></div>
+          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>Operations</span><span class="imp">High impact</span></div><div class="op">Automate the busywork, connect the tools</div><div class="map-bar"><i data-w="88"></i></div></div>
+          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>Support &amp; Success</span><span class="imp">High impact</span></div><div class="op">Deflect, resolve, and retain at scale</div><div class="map-bar"><i data-w="95"></i></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDIBILITY -->
+<div class="creds">
+  <div class="wrap creds-row">
+    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Co-Founder of SalesAi</div>
+    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> AI shipped to production</div>
+    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Product · Operations · CX</div>
+    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg> Outcomes over hype</div>
+  </div>
+</div>
+
+<!-- THE SHIFT -->
+<section id="shift">
+  <div class="wrap">
+    <span class="eyebrow reveal">The difference</span>
+    <h2 class="section-title reveal" style="margin-top:10px">Everyone is "doing AI."<br>Almost no one is <span class="grad-text">operationalizing it.</span></h2>
+    <div class="shift-grid">
+      <div class="shift-card bad reveal">
+        <h3>Where AI usually stalls</h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Pilots and demos that never reach production</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> Tools bought, then ignored by the team</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> "AI strategy" that's a slide deck, not a system</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> No clear ROI, so the budget dries up</li>
+        </ul>
+      </div>
+      <div class="shift-card good reveal">
+        <h3>What I deliver</h3>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> AI built into the real workflows that run the business</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Teams that actually adopt it, because they helped shape it</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> A prioritized plan tied to measurable outcomes</li>
+          <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Provable ROI in weeks, not quarters</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM SELECTOR -->
+<section class="teams" id="teams">
+  <div class="wrap">
+    <span class="eyebrow reveal">Where I create impact</span>
+    <h2 class="section-title reveal" style="margin-top:10px">Three teams. One unfair advantage.</h2>
+    <p class="section-sub reveal">I embed AI where it changes the day-to-day: in product, in operations, and across customer support &amp; success. Pick a team to see exactly how.</p>
+    <div class="tabs" id="tabs">
+      <button class="tab active" data-tab="product">
+        <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span>
+        <span><span class="tt">Product</span><span class="ts">AI-native product &amp; roadmap</span></span>
+      </button>
+      <button class="tab" data-tab="ops">
+        <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        <span><span class="tt">Operations</span><span class="ts">Automate &amp; connect the business</span></span>
+      </button>
+      <button class="tab" data-tab="cx">
+        <span class="ti"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+        <span><span class="tt">Support &amp; Success</span><span class="ts">Resolve, retain, personalize</span></span>
+      </button>
+    </div>
+    <div class="panel-wrap reveal">
+      <div class="panel show" data-panel="product">
+        <div class="panel-grid">
+          <div>
+            <h3>Ship AI features people<br>actually adopt.</h3>
+            <p class="psub">AI-native product strategy, from roadmap to guardrails to launch, so your AI bets become features users keep.</p>
+            <div class="outcome"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> From AI experiments to shipped features that stick.</div>
+          </div>
+          <ul class="uc">
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>AI product strategy &amp; roadmap tied to real user outcomes</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Build-vs-buy, model, and tooling decisions you can defend</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Evals, guardrails &amp; quality systems so AI features are trustworthy</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>AI-assisted discovery &amp; research synthesis to move faster</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>AI embedded into the product experience, not bolted on</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel" data-panel="ops">
+        <div class="panel-grid">
+          <div>
+            <h3>Automate the busywork.<br>Connect the disconnected.</h3>
+            <p class="psub">AI built into the processes that run your business, so work flows without the manual handoffs and swivel-chair.</p>
+            <div class="outcome"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Hours back, fewer handoffs, a business that runs leaner.</div>
+          </div>
+          <ul class="uc">
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Map &amp; redesign high-friction processes around AI</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Automate document, data, and manual-handoff-heavy workflows</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Internal copilots that make every team member faster</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Connect your tools so work flows automatically end-to-end</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Dashboards &amp; signal so leadership sees what AI is doing</li>
+          </ul>
+        </div>
+      </div>
+      <div class="panel" data-panel="cx">
+        <div class="panel-grid">
+          <div>
+            <h3>Resolve faster. Retain more.<br>Personalize at scale.</h3>
+            <p class="psub">AI that absorbs the volume and arms your team with signal, so support and success get sharper, not more stretched.</p>
+            <div class="outcome"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> Higher resolution and retention, without burning out your team.</div>
+          </div>
+          <ul class="uc">
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>AI agents that deflect &amp; resolve tier-1 volume, 24/7</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Knowledge bases restructured so AI answers accurately</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Every conversation scored for quality, risk &amp; opportunity</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Health scoring &amp; churn signal so success teams act early</li>
+            <li><span class="ck"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span>Faster onboarding &amp; proactive outreach, driven by data</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ESTIMATOR -->
+<section id="estimator" class="teams" style="background:var(--bg-2)">
+  <div class="wrap">
+    <span class="eyebrow reveal">See your upside</span>
+    <h2 class="section-title reveal" style="margin-top:10px">What could AI unlock<br>for your team?</h2>
+    <p class="section-sub reveal">A quick, directional estimate of the capacity AI can free up. Move the slider, pick a team, and watch it update. Your exact number comes from the audit.</p>
+    <div class="est reveal">
+      <div class="est-controls">
+        <h4>1. Which team?</h4>
+        <div class="seg" id="estSeg">
+          <button class="on" data-team="product" data-factor="0.35">Product</button>
+          <button data-team="ops" data-factor="0.45">Operations</button>
+          <button data-team="cx" data-factor="0.5">Support &amp; Success</button>
+        </div>
+        <div class="est-label"><span>2. Hours your team spends on repetitive work each week</span><b id="estHrsLbl">120 hrs</b></div>
+        <input type="range" class="est-range" id="estRange" min="20" max="400" step="10" value="120" />
+        <div class="est-ends"><span>20</span><span>400+</span></div>
+        <div class="est-note">Estimate assumes AI offloads roughly <span id="estPct">35</span>% of repetitive work for this team, valued at a blended $60/hr. It's directional, meant to start a conversation. We pin down your real number in the AI Opportunity Sprint.</div>
+      </div>
+      <div class="est-result">
+        <div class="est-cap">Capacity AI could free up</div>
+        <div class="est-big"><span id="estWeek">42</span><small> hrs / week</small></div>
+        <div class="est-subs">
+          <div><div class="v grad-text" id="estYear">2,016</div><div class="l">hours / year</div></div>
+          <div><div class="v grad-text" id="estDollars">$121K</div><div class="l">reclaimed capacity / yr</div></div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Get your real number &nbsp;&rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="wrap">
+    <span class="eyebrow reveal">How I work</span>
+    <h2 class="section-title reveal" style="margin-top:10px">A clear path from idea to ROI</h2>
+    <p class="section-sub reveal">No open-ended retainers or vague strategy. A focused engagement that ships.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="num">1</div><h4>Map</h4><p>I audit your processes, tools, and teams to find where AI has the highest, fastest ROI.</p></div>
+      <div class="step reveal"><div class="num">2</div><h4>Prioritize</h4><p>We turn the opportunity map into a sequenced plan, starting with quick, provable wins.</p></div>
+      <div class="step reveal"><div class="num">3</div><h4>Build</h4><p>I build AI into your real workflows and ship it to production, not slideware.</p></div>
+      <div class="step reveal"><div class="num">4</div><h4>Enable &amp; Scale</h4><p>Your team is trained and bought-in, so the wins compound long after I'm gone.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DELIVERABLES -->
+<section class="deliver">
+  <div class="wrap">
+    <span class="eyebrow reveal">What you walk away with</span>
+    <h2 class="section-title reveal" style="margin-top:10px">Tangible outcomes, not a slide deck</h2>
+    <div class="del-grid">
+      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>An AI opportunity map</b><p>A prioritized, ROI-ranked view of where AI moves the needle across your teams.</p></div></div>
+      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Shipped AI workflows</b><p>Real automation and AI features running in production, not stuck in a backlog.</p></div></div>
+      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>An enabled, bought-in team</b><p>People trained to run, trust, and extend the AI, so it sticks after the engagement.</p></div></div>
+      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Guardrails that scale</b><p>Evals, quality checks, and safe-by-default patterns so AI grows without breaking.</p></div></div>
+      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Measured ROI</b><p>Clear before-and-after metrics tied to the outcomes your leadership cares about.</p></div></div>
+      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>A repeatable AI playbook</b><p>The patterns and judgment to keep finding and shipping the next AI win on your own.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY ME -->
+<section id="why" class="why">
+  <div class="wrap">
+    <div class="why-grid">
+      <div style="display:flex;justify-content:center"><div class="why-photo"><img src="assets/brandon-headshot.png" alt="Brandon Poplstein" /></div></div>
+      <div>
+        <span class="eyebrow reveal">Why work with me</span>
+        <h2 class="reveal" style="margin-top:10px">I've built the AI I advise on.</h2>
+        <p class="reveal">I'm not a slide-deck consultant. I co-founded <b>SalesAi</b> and ship AI products to production, so I've lived the work across product, operations, and customer-facing teams, not just talked about it.</p>
+        <p class="reveal">My whole approach comes down to one belief: <b>AI should augment people, not replace the human edge.</b> The win isn't replacing your team, it's removing friction, freeing them for higher-value work, and making every customer interaction sharper, faster, and more human.</p>
+        <div class="sig reveal"><span class="bdot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--brand)"></span> Brandon Poplstein · Co-Founder, SalesAi &amp; AI Product Leader</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENGAGEMENTS -->
+<section id="engagements">
+  <div class="wrap">
+    <span class="eyebrow reveal">Ways to work together</span>
+    <h2 class="section-title reveal" style="margin-top:10px">Pick the level that fits</h2>
+    <div class="eng-grid">
+      <div class="eng reveal">
+        <div class="en">Start here</div>
+        <div class="eh">AI Opportunity Sprint</div>
+        <p>A focused audit that maps your highest-ROI AI opportunities across product, ops, and CX, with a clear, sequenced plan to capture them. Fast, concrete, and low-commitment.</p>
+        <div class="ef">Best for teams who want clarity and a plan.</div>
+        <a href="#contact" class="btn btn-ghost">Book a call</a>
+      </div>
+      <div class="eng feat reveal">
+        <div class="tag">Most popular</div>
+        <div class="en">Go deeper</div>
+        <div class="eh">Embedded AI Advisor</div>
+        <p>An ongoing partnership where I'm in the room with your team, steering AI strategy and execution, unblocking decisions, and making sure what gets built actually ships and gets adopted.</p>
+        <div class="ef">Best for teams scaling AI across the org.</div>
+        <a href="#contact" class="btn btn-primary">Book a call</a>
+      </div>
+      <div class="eng reveal">
+        <div class="en">Build with me</div>
+        <div class="eh">Build Partner</div>
+        <p>I roll up my sleeves and build AI into your workflows alongside your team, end to end, from design to shipped, production-grade systems your team can run.</p>
+        <div class="ef">Best for teams who want it built, now.</div>
+        <a href="#contact" class="btn btn-ghost">Book a call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg2" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="text-align:center;display:block">Questions</span>
+    <h2 class="section-title reveal" style="margin-top:10px;text-align:center">The honest answers</h2>
+    <div class="faq">
+      <div class="qa"><button>Will AI replace my team? <span class="ic">+</span></button><div class="ans"><p>No, and I'd push back if that were the goal. I build AI that augments people: it removes friction and absorbs the repetitive work so your team is freed for the higher-value, human work only they can do. Done right, AI makes your people more valuable, not less.</p></div></div>
+      <div class="qa"><button>Do you just advise, or actually build? <span class="ic">+</span></button><div class="ans"><p>Both, and the building is the point. I'll set the strategy, but I also roll up my sleeves and ship AI into your real workflows. I co-founded SalesAi and put AI in production for a living, so you get someone who has done the work, not just diagrammed it.</p></div></div>
+      <div class="qa"><button>How fast do we see results? <span class="ic">+</span></button><div class="ans"><p>We target the first provable win in weeks, not quarters. The engagement is sequenced to start with high-ROI, low-friction opportunities so you see momentum (and ROI) early, which makes the bigger bets easier to fund.</p></div></div>
+      <div class="qa"><button>We've tried AI before and it stalled. Why is this different? <span class="ic">+</span></button><div class="ans"><p>Because most AI stalls for the same reasons: it never reaches production, the team doesn't adopt it, or no one can prove ROI. I design every engagement around exactly those failure points, building into real workflows, bringing your team along so they own it, and tying everything to measurable outcomes.</p></div></div>
+      <div class="qa"><button>What size company is this for? <span class="ic">+</span></button><div class="ans"><p>From scaling startups to established teams. What matters more than size is intent: leaders and operators who know AI matters and want it driving measurable results across product, operations, or customer teams, not just running experiments.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="contact" class="final">
+  <div class="aurora"><div class="blob b1" style="left:50%;transform:translateX(-50%);top:-120px;width:540px;opacity:.32"></div></div>
+  <div class="wrap">
+    <span class="eyebrow reveal">Let's talk</span>
+    <h2 class="reveal" style="margin-top:12px">Let's find where AI moves<br>the needle for you.</h2>
+    <p class="reveal">The best first step is a quick conversation to map where AI can have the most impact across your product, operations, and customer teams. No pitch, just a clear read on your biggest opportunities.</p>
+    <div class="call-get reveal">
+      <div class="g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Your biggest AI opportunities</div>
+      <div class="g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> A real read on effort &amp; ROI</div>
+      <div class="g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> A clear next step, no pitch</div>
+    </div>
+    <a href="mailto:brandon@salesai.com?subject=AI%20Consulting%20Inquiry" class="btn btn-primary reveal" style="font-size:17px;padding:16px 36px">Book a strategy call &nbsp;&rarr;</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div class="site-brand"><svg class="bp-lockup" viewBox="0 13 340 54" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brandon Poplstein, AI Thought Leader"><g transform="translate(10,16)"><circle class="bp-halo" cx="22.5" cy="33.5" r="11.5" fill="#3EDE6F"></circle><circle class="bp-rip" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="1.3"></circle><circle class="bp-rip bp-rip2" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="1.3"></circle><circle class="bp-glow" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="5"></circle><path d="M13 4 V44" stroke="#F5F5F7" stroke-width="5" stroke-linecap="round"></path><path d="M13 4 H23 A10 10 0 0 1 23 24 H13" stroke="#F5F5F7" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"></path><circle class="bp-node" cx="22.5" cy="33.5" r="10.5" fill="none" stroke="#3EDE6F" stroke-width="5"></circle></g><line x1="68" y1="26" x2="68" y2="54" stroke="#2a2a2c" stroke-width="1"></line><text x="84" y="40" font-size="23" font-weight="600" letter-spacing="-0.5" fill="#F5F5F7">Brandon Poplstein</text><text x="85" y="59" font-size="10.5" font-weight="600" letter-spacing="2.2" fill="#3EDE6F">AI THOUGHT LEADER</text></svg></div>
+    <div class="foot-links"><a href="index.html">About</a><a href="salesai.html">SalesAi</a><a href="blog.html">Blog</a><a href="mailto:brandon@salesai.com">Contact</a></div>
+    <div>© 2026 Brandon Poplstein</div>
+  </div>
+</footer>
+
+<script>
+const prog=document.getElementById('progress'),hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>{const h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight);
+  prog.style.width=(sc*100)+'%';hdr.classList.toggle('scrolled',h.scrollTop>10);},{passive:true});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{
+  const id=a.getAttribute('href');if(!id||id.length<2)return;const t=document.querySelector(id);if(!t)return;
+  e.preventDefault();const y=t.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:Math.max(y,0),behavior:'smooth'});history.replaceState(null,'',id);});});
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.16});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el);});
+
+// opportunity map bars
+const mc=document.getElementById('mapCard');
+if(mc){const mo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+  mc.querySelectorAll('.map-bar i').forEach(b=>b.style.width=b.dataset.w+'%');mo.disconnect();}}),{threshold:.4});mo.observe(mc);}
+
+// team tabs
+const tabs=document.querySelectorAll('.tab'),panels=document.querySelectorAll('.panel');
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  const key=t.dataset.tab;panels.forEach(p=>p.classList.toggle('show',p.dataset.panel===key));
+}));
+
+// AI impact estimator
+(function(){
+  const seg=document.getElementById('estSeg'),range=document.getElementById('estRange');
+  if(!seg||!range)return;
+  const hrsLbl=document.getElementById('estHrsLbl'),pctEl=document.getElementById('estPct');
+  const wEl=document.getElementById('estWeek'),yEl=document.getElementById('estYear'),dEl=document.getElementById('estDollars');
+  let factor=0.35;const RATE=60,WEEKS=48;
+  const cur={w:0,y:0,d:0},raf={w:0,y:0,d:0};
+  function fmt(n){return n>=1000?Math.round(n).toLocaleString('en-US'):Math.round(n);}
+  function money(n){return n>=1000?'$'+Math.round(n/1000)+'K':'$'+Math.round(n);}
+  function animate(el,key,target,asMoney){
+    cancelAnimationFrame(raf[key]);const start=cur[key],t0=performance.now(),dur=460;
+    (function step(now){const p=Math.min((now-t0)/dur,1),e=1-Math.pow(1-p,3),v=start+(target-start)*e;
+      el.textContent=asMoney?money(v):fmt(v);if(p<1)raf[key]=requestAnimationFrame(step);else cur[key]=target;})(t0);
+  }
+  function update(){
+    const hrs=+range.value;hrsLbl.textContent=(hrs>=400?'400+':hrs)+' hrs';
+    pctEl.textContent=Math.round(factor*100);
+    const week=hrs*factor,year=week*WEEKS,dollars=year*RATE;
+    animate(wEl,'w',week,false);animate(yEl,'y',year,false);animate(dEl,'d',dollars,true);
+  }
+  seg.querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{
+    seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+    factor=+b.dataset.factor;update();}));
+  range.addEventListener('input',update);
+  // init on view
+  const eo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){update();eo.disconnect();}}),{threshold:.3});
+  eo.observe(document.getElementById('estimator'));
+})();
+
+// faq accordion
+document.querySelectorAll('.qa').forEach(q=>{const btn=q.querySelector('button'),ans=q.querySelector('.ans');
+  btn.addEventListener('click',()=>{const open=q.classList.contains('open');
+    document.querySelectorAll('.qa').forEach(o=>{o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null;});
+    if(!open){q.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}});});
+</script>
+</body>
+</html>
