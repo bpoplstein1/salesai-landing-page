@@ -67,6 +67,7 @@
   .subnav{display:inline-flex;align-items:center;gap:3px;background:rgba(22,22,24,.85);backdrop-filter:blur(18px);border:1px solid var(--line);border-radius:999px;padding:6px;box-shadow:0 12px 34px rgba(0,0,0,.45)}
   .subnav a:not(.subnav-cta){font-size:13.5px;font-weight:600;color:var(--muted);padding:8px 16px;border-radius:999px;transition:.2s;white-space:nowrap}
   .subnav a:not(.subnav-cta):hover{color:var(--ink);background:rgba(255,255,255,.06)}
+  .subnav a:not(.subnav-cta).active{color:var(--brand);background:rgba(62,222,111,.12)}
   .subnav-cta{font-size:13.5px;font-weight:800;color:var(--ink-on-green);background:var(--brand);padding:8px 18px;border-radius:999px;transition:.2s;margin-left:3px;white-space:nowrap}
   .subnav-cta:hover{background:var(--brand-lt)}
   @media(max-width:520px){.subnav a:not(.subnav-cta){padding:8px 11px;font-size:12.5px}.subnav-cta{padding:8px 14px}}
@@ -964,6 +965,32 @@ play();
   nav.querySelectorAll('.site-links a').forEach(function(a){a.addEventListener('click',close);});
   document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target))close();});
   window.addEventListener('resize',function(){if(window.innerWidth>600)close();});
+})();
+
+// secondary subnav scroll-spy: highlight the section you're viewing (works desktop + mobile;
+// on mobile the pill scrolls, so center the active item)
+(function(){
+  var subnav=document.querySelector('.subnav');
+  if(!subnav)return;
+  var links=[].slice.call(subnav.querySelectorAll('a:not(.subnav-cta)[href^="#"]'));
+  var targets=links.map(function(a){return {a:a,el:document.querySelector(a.getAttribute('href'))};}).filter(function(o){return o.el;});
+  if(!targets.length)return;
+  var activeA=null;
+  function centerActive(a){
+    if(subnav.scrollWidth<=subnav.clientWidth+2)return; // no horizontal scroll (desktop)
+    var ar=a.getBoundingClientRect(),sr=subnav.getBoundingClientRect();
+    var left=subnav.scrollLeft+(ar.left-sr.left)-(subnav.clientWidth-ar.width)/2;
+    subnav.scrollTo({left:Math.max(0,left),behavior:'smooth'});
+  }
+  function spy(){
+    var offset=130,cur=targets[0];
+    targets.forEach(function(t){ if(t.el.getBoundingClientRect().top-offset<=0) cur=t; });
+    links.forEach(function(a){a.classList.toggle('active',a===cur.a);});
+    if(cur.a!==activeA){activeA=cur.a;centerActive(cur.a);}
+  }
+  addEventListener('scroll',spy,{passive:true});
+  addEventListener('resize',spy,{passive:true});
+  spy();
 })();
 </script>
 </body>
