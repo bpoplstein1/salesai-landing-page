@@ -392,6 +392,10 @@
   .site-nav.open .nav-toggle span:nth-child(2){opacity:0}
   .site-nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   @media(max-width:600px){
+    h1,h2,h3,h4{text-wrap:balance}
+    h1 br,h2 br,h3 br{display:none}
+    .hero h1{font-size:30px;line-height:1.08}
+    h2.section-title{font-size:26px;line-height:1.14}
     .nav-toggle{display:flex}
     .site-links{position:absolute;top:100%;left:0;right:0;z-index:5;flex-direction:column;align-items:stretch;gap:0;background:#0c0c0e;border-bottom:1px solid var(--line);box-shadow:0 24px 44px rgba(0,0,0,.55);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .3s ease,opacity .25s ease}
     .site-nav.open .site-links{max-height:75vh;opacity:1;visibility:visible}
@@ -440,7 +444,7 @@
       <div>
         <div class="hero-logo"><svg xmlns="http://www.w3.org/2000/svg" viewBox="17.2 189.7 467.1 124.5" aria-label="SalesAi" style="height:38px;width:auto;display:block"><path d="M56.72 197.74c-16.02 0-29.05 13.03-29.05 29.05v10.53h68.57v68.57h10.53c16.02 0 29.05-13.03 29.05-29.05v-79.1h-79.1Zm51.59 96v-68.5H39.82c.78-8.64 8.07-15.43 16.9-15.43h67.02v67.02c0 8.84-6.79 16.12-15.43 16.9Z" fill="#3ede6f"/><path d="M73.57 260.08c-5.04-4.9-11.7-7.61-18.74-7.61h-.39c-7.19.1-13.91 2.99-18.91 8.13-10.34 10.64-10.1 27.7.53 38.05 5.04 4.9 11.7 7.61 18.75 7.61h.39c7.19-.1 13.91-2.99 18.91-8.13 5-5.14 7.7-11.94 7.6-19.13-.1-7.19-2.99-13.91-8.13-18.91Zm-4.33 19.08c.05 3.86-1.39 7.5-4.08 10.26a14.316 14.316 0 0 1-10.15 4.36h-.21c-3.79 0-7.34-1.44-10.05-4.08a14.316 14.316 0 0 1-4.36-10.15c-.05-3.86 1.39-7.5 4.08-10.26 2.83-2.91 6.59-4.36 10.35-4.36s7.26 1.36 10.06 4.08c2.76 2.68 4.31 6.29 4.36 10.15Z" fill="#3ede6f"/><path d="M221.94 267.48c0-2.14-.76-3.81-2.27-5.01s-4.18-2.43-7.99-3.71-6.93-2.52-9.35-3.71c-7.87-3.87-11.81-9.18-11.81-15.94 0-3.37.98-6.34 2.94-8.91s4.74-4.58 8.33-6.01 7.62-2.15 12.1-2.15 8.28.78 11.75 2.34 6.16 3.78 8.08 6.66 2.88 6.17 2.88 9.87h-14.61c0-2.48-.76-4.4-2.27-5.76s-3.57-2.04-6.16-2.04-4.68.58-6.2 1.73-2.27 2.62-2.27 4.4c0 1.56.83 2.97 2.5 4.24s4.6 2.57 8.81 3.92 7.65 2.8 10.35 4.36c6.57 3.78 9.85 9 9.85 15.65 0 5.31-2 9.49-6.01 12.52s-9.5 4.55-16.48 4.55c-4.92 0-9.38-.88-13.38-2.65-3.99-1.77-7-4.19-9.01-7.26s-3.03-6.61-3.03-10.62h14.69c0 3.26.84 5.65 2.52 7.2s4.42 2.32 8.2 2.32c2.42 0 4.33-.52 5.74-1.56s2.11-2.51 2.11-4.4Zm46.94 16.15c-.5-.92-.95-2.27-1.34-4.05-2.59 3.26-6.2 4.88-10.85 4.88-4.26 0-7.87-1.29-10.85-3.86-2.98-2.57-4.47-5.81-4.47-9.7 0-4.9 1.81-8.6 5.43-11.1s8.88-3.76 15.77-3.76h4.34v-2.39c0-4.17-1.79-6.25-5.38-6.25-3.34 0-5.01 1.65-5.01 4.95h-14.06c0-4.36 1.86-7.9 5.57-10.63s8.45-4.09 14.21-4.09 10.31 1.4 13.65 4.21 5.05 6.66 5.13 11.56v19.99c.06 4.15.7 7.32 1.92 9.51v.71h-14.06Zm-8.8-9.18c1.75 0 3.21-.38 4.36-1.13s1.98-1.6 2.48-2.55v-7.22h-4.09c-4.9 0-7.34 2.2-7.34 6.59 0 1.28.43 2.32 1.29 3.11s1.96 1.19 3.3 1.19Zm43.57 9.18h-14.11v-64.1h14.11v64.1Zm30.5.84c-6.93 0-12.53-2.07-16.82-6.2-4.28-4.13-6.43-9.51-6.43-16.13v-1.17c0-4.62.86-8.69 2.57-12.23s4.21-6.27 7.49-8.2 7.18-2.9 11.68-2.9c6.34 0 11.35 1.97 15.02 5.91s5.51 9.42 5.51 16.46v5.47h-27.96c.5 2.53 1.6 4.52 3.3 5.97s3.89 2.17 6.59 2.17c4.45 0 7.93-1.56 10.43-4.67l6.43 7.6c-1.75 2.42-4.24 4.35-7.45 5.78s-6.67 2.15-10.37 2.15Zm-1.58-35.98c-4.12 0-6.57 2.73-7.34 8.18h14.19v-1.09c.06-2.25-.51-4-1.71-5.24s-2.91-1.86-5.13-1.86Zm49.91 22.46c0-1.2-.63-2.16-1.88-2.88s-3.63-1.47-7.14-2.25-6.4-1.8-8.68-3.07-4.02-2.8-5.22-4.61-1.79-3.88-1.79-6.22c0-4.15 1.71-7.56 5.13-10.25s7.9-4.03 13.44-4.03c5.95 0 10.74 1.35 14.36 4.05 3.62 2.7 5.43 6.25 5.43 10.64h-14.11c0-3.62-1.91-5.43-5.72-5.43-1.47 0-2.71.41-3.71 1.23s-1.5 1.84-1.5 3.07.61 2.27 1.84 3.05 3.18 1.42 5.86 1.92 5.04 1.1 7.07 1.79c6.79 2.34 10.18 6.52 10.18 12.56 0 4.12-1.83 7.47-5.49 10.06s-8.4 3.88-14.21 3.88c-3.87 0-7.32-.7-10.35-2.09s-5.4-3.28-7.09-5.68-2.55-4.91-2.55-7.55h13.15c.06 2.09.75 3.61 2.09 4.57s3.05 1.44 5.13 1.44c1.92 0 3.36-.39 4.32-1.17s1.44-1.79 1.44-3.05Zm55.29 1.33H417.7l-3.51 11.35h-15.65l22.28-60.76h13.77l22.45 60.76h-15.73l-3.55-11.35Zm-16.56-11.31h13.06l-6.55-21.07-6.51 21.07Zm39.52-34.13c0-2 .72-3.64 2.17-4.92s3.32-1.92 5.63-1.92 4.19.64 5.63 1.92 2.17 2.92 2.17 4.92-.72 3.64-2.17 4.92-3.32 1.92-5.63 1.92-4.19-.64-5.63-1.92-2.17-2.92-2.17-4.92Zm14.94 56.79h-14.11v-45.15h14.11v45.15Z" fill="#fff"/></svg></div>
         <div class="hero-badge"><span class="ping"></span> Ai agents that answer, qualify &amp; book, around the clock</div>
-        <h1>Answer, qualify, and book<br><span class="grad-text">every lead.</span></h1>
+        <h1>Answer, qualify, and book <br> <span class="grad-text">every lead.</span></h1>
         <p class="lead">Your Ai agent answers, qualifies, and books in seconds, so your team stops losing leads to whoever engages first. By voice and text, around the clock, inside the CRM you already use.</p>
         <div class="hero-cta">
           <!-- CTA hook: repoint href to your own lead-tracking Ai agent when ready -->
@@ -482,7 +486,7 @@
 <section id="industries">
   <div class="wrap">
     <span class="eyebrow reveal">Who it's for</span>
-    <h2 class="section-title reveal" style="margin-top:10px">Built for the teams that live or die<br>by <span class="grad-text">speed to lead.</span></h2>
+    <h2 class="section-title reveal" style="margin-top:10px">Built for the teams that live or die <br> by <span class="grad-text">speed to lead.</span></h2>
     <div class="verts">
       <div class="vert reveal"><div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg></div><b>Home Services</b><p>Answer every call, book the job, and dispatch the tech, around the clock.</p></div>
       <div class="vert reveal"><div class="vi"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><b>Staffing &amp; Recruiting</b><p>Screen and schedule candidates the minute they apply.</p></div>
@@ -497,7 +501,7 @@
 <section id="howwework">
   <div class="wrap">
     <span class="eyebrow reveal">Done for you</span>
-    <h2 class="section-title reveal" style="margin-top:10px">We build it. We run it.<br><span class="grad-text">You focus on what matters.</span></h2>
+    <h2 class="section-title reveal" style="margin-top:10px">We build it. We run it. <br> <span class="grad-text">You focus on what matters.</span></h2>
     <p class="section-sub reveal">A fully managed Ai workforce, designed, deployed, and tuned for you. Our agents don't eat, sleep, or call in sick.</p>
     <div class="brun">
       <div class="bc reveal"><div class="bn">We build it</div><h3>Trained on your business</h3><p>We design and train your Ai agents on your offers, your scripts, and your edge cases. You don't lift a finger.</p></div>
@@ -547,7 +551,7 @@
 <section id="value">
   <div class="wrap">
     <span class="eyebrow reveal">The Platform</span>
-    <h2 class="section-title reveal" style="margin-top:10px">The follow-up gap costs you deals.<br><span class="grad-text">We close it.</span></h2>
+    <h2 class="section-title reveal" style="margin-top:10px">The follow-up gap costs you deals. <br> <span class="grad-text">We close it.</span></h2>
     <p class="section-sub reveal">Leads go cold in minutes and tickets pile up overnight. SalesAi engages every conversation the instant it happens, at any volume, inside the CRM you already use.</p>
     <div class="bento" id="valgrid">
       <!-- HERO: Speed -->
@@ -764,7 +768,7 @@
 <section id="healthscore">
   <div class="wrap">
     <span class="eyebrow reveal">The Single Metric</span>
-    <h2 class="section-title reveal" style="margin-top:10px">The numbers leadership checks,<br><span class="grad-text">live in one dashboard.</span></h2>
+    <h2 class="section-title reveal" style="margin-top:10px">The numbers leadership checks, <br> <span class="grad-text">live in one dashboard.</span></h2>
     <p class="section-sub reveal">Real-time uptime, client satisfaction, and the hiring cost SalesAi takes off your team. Always on, always visible.</p>
     <div class="hs-card reveal">
       <div class="hs-head">
@@ -812,7 +816,7 @@
   <div class="aurora"><div class="blob b3" style="left:50%;transform:translateX(-50%);bottom:auto;top:-120px;opacity:.4"></div></div>
   <div class="wrap">
     <div class="logo center" style="justify-content:center;margin-bottom:26px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="17.2 189.7 467.1 124.5" aria-label="SalesAi" style="height:46px;width:auto;display:block"><path d="M56.72 197.74c-16.02 0-29.05 13.03-29.05 29.05v10.53h68.57v68.57h10.53c16.02 0 29.05-13.03 29.05-29.05v-79.1h-79.1Zm51.59 96v-68.5H39.82c.78-8.64 8.07-15.43 16.9-15.43h67.02v67.02c0 8.84-6.79 16.12-15.43 16.9Z" fill="#3ede6f"/><path d="M73.57 260.08c-5.04-4.9-11.7-7.61-18.74-7.61h-.39c-7.19.1-13.91 2.99-18.91 8.13-10.34 10.64-10.1 27.7.53 38.05 5.04 4.9 11.7 7.61 18.75 7.61h.39c7.19-.1 13.91-2.99 18.91-8.13 5-5.14 7.7-11.94 7.6-19.13-.1-7.19-2.99-13.91-8.13-18.91Zm-4.33 19.08c.05 3.86-1.39 7.5-4.08 10.26a14.316 14.316 0 0 1-10.15 4.36h-.21c-3.79 0-7.34-1.44-10.05-4.08a14.316 14.316 0 0 1-4.36-10.15c-.05-3.86 1.39-7.5 4.08-10.26 2.83-2.91 6.59-4.36 10.35-4.36s7.26 1.36 10.06 4.08c2.76 2.68 4.31 6.29 4.36 10.15Z" fill="#3ede6f"/><path d="M221.94 267.48c0-2.14-.76-3.81-2.27-5.01s-4.18-2.43-7.99-3.71-6.93-2.52-9.35-3.71c-7.87-3.87-11.81-9.18-11.81-15.94 0-3.37.98-6.34 2.94-8.91s4.74-4.58 8.33-6.01 7.62-2.15 12.1-2.15 8.28.78 11.75 2.34 6.16 3.78 8.08 6.66 2.88 6.17 2.88 9.87h-14.61c0-2.48-.76-4.4-2.27-5.76s-3.57-2.04-6.16-2.04-4.68.58-6.2 1.73-2.27 2.62-2.27 4.4c0 1.56.83 2.97 2.5 4.24s4.6 2.57 8.81 3.92 7.65 2.8 10.35 4.36c6.57 3.78 9.85 9 9.85 15.65 0 5.31-2 9.49-6.01 12.52s-9.5 4.55-16.48 4.55c-4.92 0-9.38-.88-13.38-2.65-3.99-1.77-7-4.19-9.01-7.26s-3.03-6.61-3.03-10.62h14.69c0 3.26.84 5.65 2.52 7.2s4.42 2.32 8.2 2.32c2.42 0 4.33-.52 5.74-1.56s2.11-2.51 2.11-4.4Zm46.94 16.15c-.5-.92-.95-2.27-1.34-4.05-2.59 3.26-6.2 4.88-10.85 4.88-4.26 0-7.87-1.29-10.85-3.86-2.98-2.57-4.47-5.81-4.47-9.7 0-4.9 1.81-8.6 5.43-11.1s8.88-3.76 15.77-3.76h4.34v-2.39c0-4.17-1.79-6.25-5.38-6.25-3.34 0-5.01 1.65-5.01 4.95h-14.06c0-4.36 1.86-7.9 5.57-10.63s8.45-4.09 14.21-4.09 10.31 1.4 13.65 4.21 5.05 6.66 5.13 11.56v19.99c.06 4.15.7 7.32 1.92 9.51v.71h-14.06Zm-8.8-9.18c1.75 0 3.21-.38 4.36-1.13s1.98-1.6 2.48-2.55v-7.22h-4.09c-4.9 0-7.34 2.2-7.34 6.59 0 1.28.43 2.32 1.29 3.11s1.96 1.19 3.3 1.19Zm43.57 9.18h-14.11v-64.1h14.11v64.1Zm30.5.84c-6.93 0-12.53-2.07-16.82-6.2-4.28-4.13-6.43-9.51-6.43-16.13v-1.17c0-4.62.86-8.69 2.57-12.23s4.21-6.27 7.49-8.2 7.18-2.9 11.68-2.9c6.34 0 11.35 1.97 15.02 5.91s5.51 9.42 5.51 16.46v5.47h-27.96c.5 2.53 1.6 4.52 3.3 5.97s3.89 2.17 6.59 2.17c4.45 0 7.93-1.56 10.43-4.67l6.43 7.6c-1.75 2.42-4.24 4.35-7.45 5.78s-6.67 2.15-10.37 2.15Zm-1.58-35.98c-4.12 0-6.57 2.73-7.34 8.18h14.19v-1.09c.06-2.25-.51-4-1.71-5.24s-2.91-1.86-5.13-1.86Zm49.91 22.46c0-1.2-.63-2.16-1.88-2.88s-3.63-1.47-7.14-2.25-6.4-1.8-8.68-3.07-4.02-2.8-5.22-4.61-1.79-3.88-1.79-6.22c0-4.15 1.71-7.56 5.13-10.25s7.9-4.03 13.44-4.03c5.95 0 10.74 1.35 14.36 4.05 3.62 2.7 5.43 6.25 5.43 10.64h-14.11c0-3.62-1.91-5.43-5.72-5.43-1.47 0-2.71.41-3.71 1.23s-1.5 1.84-1.5 3.07.61 2.27 1.84 3.05 3.18 1.42 5.86 1.92 5.04 1.1 7.07 1.79c6.79 2.34 10.18 6.52 10.18 12.56 0 4.12-1.83 7.47-5.49 10.06s-8.4 3.88-14.21 3.88c-3.87 0-7.32-.7-10.35-2.09s-5.4-3.28-7.09-5.68-2.55-4.91-2.55-7.55h13.15c.06 2.09.75 3.61 2.09 4.57s3.05 1.44 5.13 1.44c1.92 0 3.36-.39 4.32-1.17s1.44-1.79 1.44-3.05Zm55.29 1.33H417.7l-3.51 11.35h-15.65l22.28-60.76h13.77l22.45 60.76h-15.73l-3.55-11.35Zm-16.56-11.31h13.06l-6.55-21.07-6.51 21.07Zm39.52-34.13c0-2 .72-3.64 2.17-4.92s3.32-1.92 5.63-1.92 4.19.64 5.63 1.92 2.17 2.92 2.17 4.92-.72 3.64-2.17 4.92-3.32 1.92-5.63 1.92-4.19-.64-5.63-1.92-2.17-2.92-2.17-4.92Zm14.94 56.79h-14.11v-45.15h14.11v45.15Z" fill="#fff"/></svg></div>
-    <h2 class="reveal">Stop losing leads to whoever<br><span class="grad-text">engages first.</span></h2>
+    <h2 class="reveal">Stop losing leads to whoever <br> <span class="grad-text">engages first.</span></h2>
     <p class="reveal">Talk to a SalesAi agent and watch it answer, qualify, and book a lead live. Then we will right-size your Volume and Impact plan together.</p>
     <div class="reveal" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
       <!-- CTA hook: repoint to your own lead-tracking Ai agent when ready -->

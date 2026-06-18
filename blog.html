@@ -57,6 +57,10 @@
   .site-nav.open .nav-toggle span:nth-child(2){opacity:0}
   .site-nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
   @media(max-width:600px){
+    h1,h2,h3,h4{text-wrap:balance}
+    h1 br,h2 br,h3 br{display:none}
+    .hero h1{font-size:30px;line-height:1.08}
+    h2.section-title{font-size:26px;line-height:1.14}
     .nav-toggle{display:flex}
     .site-links{position:absolute;top:100%;left:0;right:0;z-index:5;flex-direction:column;align-items:stretch;gap:0;background:#0c0c0e;border-bottom:1px solid var(--line);box-shadow:0 24px 44px rgba(0,0,0,.55);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .3s ease,opacity .25s ease}
     .site-nav.open .site-links{max-height:75vh;opacity:1;visibility:visible}
@@ -78,7 +82,7 @@
   <div class="glow"></div>
   <div class="wrap">
     <span class="eyebrow">The Blog</span>
-    <h1>Practical AI,<br><span class="grad">coming soon.</span></h1>
+    <h1>Practical AI, <br> <span class="grad">coming soon.</span></h1>
     <p>I'm putting together an outcome-driven take on how businesses should actually adopt and operationalize AI. First posts are on the way.</p>
     <a href="mailto:brandon@salesai.com?subject=Notify%20me%20about%20the%20blog" class="btn">Get notified &nbsp;&rarr;</a>
   </div>
