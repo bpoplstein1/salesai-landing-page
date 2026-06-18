@@ -235,6 +235,22 @@
   @keyframes bpBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
   @keyframes bpGlow{0%,100%{filter:drop-shadow(0 0 1px rgba(62,222,111,.45))}50%{filter:drop-shadow(0 0 5px rgba(62,222,111,.95))}}
   @media(prefers-reduced-motion:reduce){.bp-beat,.bp-glow{animation:none}}
+  /* mobile nav (hamburger) — phones only; desktop/larger screens unchanged */
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:38px;padding:8px 9px;background:none;border:0;cursor:pointer;flex:none}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .2s ease}
+  .site-nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .site-nav.open .nav-toggle span:nth-child(2){opacity:0}
+  .site-nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:600px){
+    .nav-toggle{display:flex}
+    .site-links{position:absolute;top:100%;left:0;right:0;z-index:5;flex-direction:column;align-items:stretch;gap:0;background:#0c0c0e;border-bottom:1px solid var(--line);box-shadow:0 24px 44px rgba(0,0,0,.55);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .3s ease,opacity .25s ease}
+    .site-nav.open .site-links{max-height:75vh;opacity:1;visibility:visible}
+    .site-links a{font-size:15.5px;font-weight:600;padding:14px 24px;width:100%}
+    .site-links a.active{color:var(--brand)}
+    /* SalesAi secondary pill: scroll instead of overflowing the viewport */
+    .subnav{max-width:calc(100vw - 28px);overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+    .subnav::-webkit-scrollbar{display:none}
+  }
 </style>
 </head>
 <body>
@@ -249,6 +265,7 @@
       <a href="consulting.html">Consulting</a>
       <a href="blog.html">Blog</a>
     </nav>
+    <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -514,6 +531,17 @@ document.querySelectorAll('.do-card').forEach(c=>{c.addEventListener('mousemove'
   function draw(){const r=tl.getBoundingClientRect(),vh=innerHeight;
     const p=Math.max(0,Math.min(1,(vh*0.72-r.top)/(r.height-40)));fill.style.height=(p*100)+'%';}
   addEventListener('scroll',draw,{passive:true});addEventListener('resize',draw);draw();
+})();
+
+// mobile nav toggle
+(function(){
+  var nav=document.querySelector('.site-nav'), btn=nav&&nav.querySelector('.nav-toggle');
+  if(!nav||!btn)return;
+  function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
+  btn.addEventListener('click',function(e){e.stopPropagation();var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');});
+  nav.querySelectorAll('.site-links a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target))close();});
+  window.addEventListener('resize',function(){if(window.innerWidth>600)close();});
 })();
 </script>
 </body>
