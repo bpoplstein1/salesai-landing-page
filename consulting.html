@@ -135,26 +135,34 @@
   .problem p{color:#c9c9cd;font-size:clamp(17px,2.2vw,21px);max-width:60ch;line-height:1.5}
   .problem .resolve{color:var(--paper);font-weight:600;margin-top:18px}
 
-  /* DOORS */
-  .doors-head{text-align:center;max-width:44ch;margin:0 auto}
-  .doors-head h2{margin-top:6px}
+  /* DOORS — the centerpiece */
+  .doors-head{text-align:center;max-width:42ch;margin:0 auto}
+  .doors-head h2{margin-top:8px}
+  .doors-head h2 .mint{color:var(--green)}
   .doors-head p{margin-top:14px}
-  .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-top:52px}
-  @media(max-width:880px){.doors{grid-template-columns:1fr;max-width:560px;margin-inline:auto}}
-  .door{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;transition:box-shadow .25s,transform .25s,border-color .25s;display:flex;flex-direction:column}
-  .door:hover{box-shadow:0 20px 44px rgba(14,14,16,.09);transform:translateY(-3px)}
-  .door.open{border-color:var(--ink);box-shadow:0 24px 50px rgba(14,14,16,.12)}
-  .door-name{font-size:21px;font-weight:800;letter-spacing:-.01em}
-  .door-tag{font-family:var(--mono);font-size:13px;color:var(--green);margin-top:4px}
-  .door-scarcity{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--ink);background:rgba(62,222,111,.14);border:1px solid rgba(62,222,111,.4);border-radius:999px;padding:6px 12px;align-self:flex-start;line-height:1.3}
-  .door-scarcity .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2.2s infinite}
+  .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-top:54px}
+  @media(max-width:880px){.doors{grid-template-columns:1fr;max-width:540px;margin-inline:auto}}
+  .door{position:relative;overflow:hidden;min-height:610px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:30px 26px;transition:box-shadow .25s,transform .25s,border-color .25s;display:flex;flex-direction:column}
+  .door::after{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#6DF79A,#16A34A);transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+  .door:hover{transform:translateY(-4px);box-shadow:0 26px 56px rgba(14,14,16,.10);border-color:#d6d8dc}
+  .door:hover::after,.door.open::after{transform:scaleX(1)}
+  .door.open{border-color:#cfd2d6;box-shadow:0 26px 56px rgba(14,14,16,.12)}
+  .door-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .door-ico{width:46px;height:46px;border-radius:13px;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.32);display:flex;align-items:center;justify-content:center;color:var(--green);flex:none}
+  .door-ico svg{width:24px;height:24px;display:block}
+  .door-no{font-family:var(--mono);font-size:28px;font-weight:500;color:#d4d5da;letter-spacing:-.03em;line-height:1}
+  .door-name{font-size:22px;font-weight:800;letter-spacing:-.015em}
+  .door-tag{font-family:var(--mono);font-size:13px;color:var(--green);margin-top:5px;letter-spacing:.02em}
+  .door-scarcity{display:flex;align-items:flex-start;gap:9px;width:100%;margin:16px 0 2px;padding:11px 13px;border-radius:12px;background:rgba(62,222,111,.1);border:1px solid rgba(62,222,111,.34);font-size:12.5px;font-weight:600;color:var(--ink);line-height:1.4}
+  .door-scarcity .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none;margin-top:5px;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2.2s infinite}
+  .door-scarcity b{font-weight:800;white-space:nowrap}
   @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
   .door-foryou{margin-top:16px;font-size:14.5px;color:var(--ink)}
   .door-foryou b{font-weight:700}
   .door-sum{margin-top:10px;font-size:14.5px;color:var(--muted);line-height:1.5}
-  .door-toggle{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:var(--soft);border:0;border-radius:11px;padding:12px 15px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;transition:.2s}
-  .door-toggle:hover{background:#e3e3e6}
-  .door-toggle .chev{transition:transform .3s;flex:none}
+  .door-toggle{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:var(--soft);border:1px solid transparent;border-radius:11px;padding:12px 15px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;transition:.2s}
+  .door-toggle:hover{background:#e7e7ea;border-color:#dcdce0}
+  .door-toggle .chev{transition:transform .3s;flex:none;color:var(--green)}
   .door.open .door-toggle .chev{transform:rotate(180deg)}
   .door-panel{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.2,1)}
   .door.open .door-panel{max-height:1400px}
@@ -167,9 +175,7 @@
   .door ul.gets{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
   .door ul.gets li{position:relative;padding-left:26px;font-size:14px;color:var(--ink);line-height:1.45}
   .door ul.gets li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:2px;background:var(--mint);border:1px solid var(--green)}
-  .door .door-cta{margin-top:auto}
   .door .door-cta .btn{margin-top:18px}
-
   /* PROOF */
   .proof{background:var(--ink);color:var(--paper)}
   .proof .eyebrow{color:var(--mint)}
@@ -309,14 +315,15 @@
 <section id="cards">
   <div class="wrap">
     <div class="doors-head">
-      <span class="eyebrow reveal">start where you are</span>
-      <h2 class="reveal">Three doors, one operating system</h2>
+      <span class="eyebrow reveal">// ways to work together</span>
+      <h2 class="reveal">Three doors, <span class="mint">one operating system</span></h2>
       <p class="lead reveal">Start where you are: learn it, plan it, or have it built.</p>
     </div>
     <div class="doors">
 
       <!-- Card A — OS Workshop -->
       <article class="door reveal">
+        <div class="door-top"><span class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 2.7 3 6 3s6-2 6-3v-5"/></svg></span><span class="door-no">01</span></div>
         <div class="door-name">OS Workshop</div>
         <div class="door-tag">Learn it.</div>
         <p class="door-foryou"><b>For you if</b> you or your team is experimenting with AI on its own and you want one shared way to think, plus a real place to start.</p>
@@ -349,6 +356,7 @@
 
       <!-- Card B — OS Advisory -->
       <article class="door reveal">
+        <div class="door-top"><span class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m15.6 8.4-2.3 5-5 2.3 2.3-5z"/></svg></span><span class="door-no">02</span></div>
         <div class="door-name">OS Advisory</div>
         <div class="door-tag">Plan it.</div>
         <p class="door-foryou"><b>For you if</b> you or your team can build, but you want the right architecture up front and a sounding board so you build it right the first time.</p>
@@ -380,10 +388,11 @@
 
       <!-- Card C — OS Install (gated + scarce) -->
       <article class="door reveal">
+        <div class="door-top"><span class="door-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 7.5 12 2 3 7.5v9L12 22l9-5.5z"/><path d="m3 7.5 9 5.5 9-5.5"/><path d="M12 13v9"/></svg></span><span class="door-no">03</span></div>
         <div class="door-name">OS Install</div>
         <div class="door-tag">Have it built.</div>
         <!-- EDITABLE: keep the "Currently booking" month current -->
-        <div class="door-scarcity"><span class="dot"></span>I take 2 to 3 builds per month. Currently booking <span id="booking-month">August</span>.</div>
+        <div class="door-scarcity"><span class="dot"></span><span>I take 2 to 3 builds per month. Currently booking <b id="booking-month">August</b>.</span></div>
         <p class="door-foryou"><b>For you if</b> you're early in bringing AI into your business and you want the system built with you and handed over, not figured out alone.</p>
         <p class="door-sum">I embed with your team for 6 to 8 weeks and build a working AI-native operating system inside your business, then train your team to run it.</p>
         <button class="door-toggle" aria-expanded="false" aria-controls="panel-install">
