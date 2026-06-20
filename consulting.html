@@ -3,453 +3,243 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>The AI-Native Operating System — Brandon Poplstein | I install the system I run</title>
+<title>AI Consulting — Brandon Poplstein | Three ways to go AI-native</title>
+<meta name="description" content="Learn the system, get the blueprint, or have it built with you. Three co-equal ways to go AI-native with Brandon Poplstein, the operator who runs his own companies on the system he installs." />
 <link rel="canonical" href="https://brandonpoplstein.com/consulting">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<meta name="description" content="I install the AI-native operating system I run at my own company. Agents in the loop, the logistics automated, your team trained to run it, in 6 to 8 weeks. Book a discovery call with Brandon Poplstein." />
+<!-- favicon: bp-favicon-256.png from the Brand Asset Kit -->
+<link rel="icon" type="image/png" href="assets/bp-favicon-256.png">
+<link rel="apple-touch-icon" href="assets/bp-favicon-256.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0A0C; --bg-2:#0E0E10; --panel:#141416; --panel-2:#1C1C1E; --panel-3:#202022;
-    --ink:#F5F5F7; --muted:#ABADAE; --muted-2:#8E8E90; --line:rgba(245,245,247,.08);
-    --brand:#3EDE6F; --brand-2:#21B873; --brand-lt:#6DF79A; --accent:#3EDE6F;
-    --grad:linear-gradient(135deg,#6DF79A 0%,#3EDE6F 55%,#21B873 100%);
-    --ink-on-green:#06140B; --radius:18px; --maxw:1120px;
+    --paper:#F5F5F7; --ink:#0E0E10; --mint:#3EDE6F; --green:#16A34A;
+    --muted:#5b5b62; --line:#e3e3e7; --card:#ffffff; --soft:#ececed;
+    --maxw:1100px; --radius:16px;
+    --mono:"Menlo",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    --sans:"Inter",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;scroll-padding-top:72px;background:#0A0A0C}
-  body{background:var(--bg);color:var(--ink);overflow-x:clip;scroll-padding-top:72px;scroll-behavior:smooth;
-    font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;position:relative;}
-  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  html{scroll-behavior:smooth;scroll-padding-top:84px}
+  body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   a{color:inherit;text-decoration:none}
-  ::selection{background:rgba(62,222,111,.26);color:#fff}
-  html{scrollbar-color:#2c2d30 var(--bg);scrollbar-width:thin}
-  ::-webkit-scrollbar{width:11px;height:11px}::-webkit-scrollbar-track{background:var(--bg)}
-  ::-webkit-scrollbar-thumb{background:#2c2d30;border-radius:99px;border:3px solid var(--bg)}
-  ::-webkit-scrollbar-thumb:hover{background:var(--brand-2)}
-  a:focus-visible,button:focus-visible{outline:2px solid var(--brand);outline-offset:3px;border-radius:8px}
-  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:2}
-  .eyebrow{display:inline-block;text-transform:uppercase;letter-spacing:.2em;font-size:12px;font-weight:700;color:var(--brand)}
-  .grad-text{color:#3EDE6F}
-  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;transition:.22s cubic-bezier(.2,.7,.2,1);cursor:pointer;border:0;white-space:nowrap}
-  .btn-primary{background:var(--brand);color:var(--ink-on-green);font-weight:800;box-shadow:0 8px 28px rgba(62,222,111,.28)}
-  .btn-primary:hover{transform:translateY(-2px);background:var(--brand-lt);box-shadow:0 16px 44px rgba(62,222,111,.5)}
-  .btn-ghost{border:1px solid var(--line);color:var(--ink);background:rgba(255,255,255,.02)}
-  .btn-ghost:hover{border-color:var(--brand);color:var(--brand);background:rgba(62,222,111,.06)}
-  section{padding:94px 0;position:relative}
-  h2.section-title{font-size:clamp(30px,4.4vw,46px);font-weight:900;letter-spacing:-.025em;line-height:1.06}
-  .section-sub{color:var(--muted);font-size:18px;margin-top:16px;max-width:680px}
-  #progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;background:var(--grad);box-shadow:0 0 12px rgba(62,222,111,.6);transition:width .1s linear}
+  ::selection{background:rgba(62,222,111,.32)}
+  img,svg{display:block}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  section{padding:96px 0;position:relative}
+  @media(max-width:640px){section{padding:64px 0}}
+
+  /* type */
+  h1,h2,h3,h4{letter-spacing:-.02em;line-height:1.07;font-weight:800}
+  h1{font-size:clamp(34px,6vw,60px)}
+  h2{font-size:clamp(28px,4.4vw,44px)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--green);font-weight:500}
+  .lead{font-size:clamp(17px,2vw,20px);color:var(--muted);line-height:1.5}
+  .muted{color:var(--muted)}
+  .mint{color:var(--green)}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 24px;border-radius:999px;font-weight:700;font-size:15px;cursor:pointer;border:1.6px solid transparent;transition:.2s cubic-bezier(.2,.7,.2,1);white-space:nowrap;font-family:inherit}
+  .btn-ink{background:var(--ink);color:var(--paper)}
+  .btn-ink:hover{transform:translateY(-2px);background:#26262b;box-shadow:0 12px 28px rgba(14,14,16,.22)}
+  .btn-mint{background:var(--mint);color:var(--ink);font-weight:800;box-shadow:0 8px 22px rgba(62,222,111,.32)}
+  .btn-mint:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(62,222,111,.45)}
+  .btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink)}
+  .btn-ghost:hover{background:var(--ink);color:var(--paper)}
+  .btn-block{width:100%;justify-content:center}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}*{animation:none!important;transition:none!important}}
 
   /* NAV */
-  header{position:sticky;top:0;z-index:60;background:#000;border-bottom:1px solid transparent;transition:.3s}
-  header.scrolled{border-bottom:1px solid var(--line);box-shadow:0 8px 30px rgba(0,0,0,.5)}
-  .site-nav{display:flex;align-items:center;justify-content:space-between;height:52px}
-  .site-brand{font-weight:800;font-size:16px;letter-spacing:-.01em;color:var(--ink);display:flex;align-items:center;gap:9px;white-space:nowrap}
-  .site-brand .bdot{width:7px;height:7px;border-radius:50%;background:var(--brand);box-shadow:0 0 8px var(--brand);flex-shrink:0;animation:pulse 2.4s ease-in-out infinite}
-  @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.82)}}
-  .site-links{display:flex;gap:28px;align-items:center}
-  .site-links a{font-size:14px;font-weight:600;color:var(--muted);transition:.2s}
-  .site-links a:hover{color:var(--ink)}.site-links a.active{color:var(--brand)}
-  @media(max-width:560px){.site-links{gap:18px}.site-links a{font-size:13px}.site-brand{font-size:15px}}
-
-  /* AURORA + GRID */
-  .aurora{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
-  .blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.42;will-change:transform}
-  .b1{width:560px;height:560px;background:radial-gradient(circle,#3EDE6F,transparent 65%);top:-220px;left:-100px;animation:drift1 18s ease-in-out infinite}
-  .b2{width:460px;height:460px;background:radial-gradient(circle,#21B873,transparent 62%);top:-140px;right:-80px;opacity:.36;animation:drift2 22s ease-in-out infinite}
-  @keyframes drift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(50px,40px) scale(1.1)}}
-  @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-40px,40px) scale(1.08)}}
-  .dotgrid{position:absolute;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(rgba(245,245,247,.06) 1px,transparent 1px);background-size:32px 32px;-webkit-mask:radial-gradient(120% 80% at 50% 0%,#000,transparent 75%);mask:radial-gradient(120% 80% at 50% 0%,#000,transparent 75%)}
-  .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
-  .reveal.in{opacity:1;transform:none}
+  header{position:sticky;top:0;z-index:60;background:rgba(245,245,247,.86);backdrop-filter:saturate(140%) blur(12px);-webkit-backdrop-filter:saturate(140%) blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .lockup{height:38px;width:auto}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{font-size:14.5px;font-weight:600;color:var(--muted);transition:.2s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.active{color:var(--ink)}
+  .nav-links a.active::after{content:"";display:block;height:2px;background:var(--mint);border-radius:2px;margin-top:3px}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:38px;padding:8px 9px;background:none;border:0;cursor:pointer}
+  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:.25s}
+  .nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.open .nav-toggle span:nth-child(2){opacity:0}
+  .nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  @media(max-width:600px){
+    .nav-toggle{display:flex}
+    .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--paper);border-bottom:1px solid var(--line);box-shadow:0 24px 40px rgba(14,14,16,.12);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .3s ease,opacity .25s ease}
+    .nav.open .nav-links{max-height:60vh;opacity:1;visibility:visible}
+    .nav-links a{padding:14px 24px}
+    .nav-links a.active::after{display:none}
+  }
 
   /* HERO */
-  .hero{padding:80px 0 60px;overflow:hidden}
-  .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:48px;align-items:center}
-  @media(max-width:920px){.hero-grid{grid-template-columns:1fr;gap:44px}}
-  .hero-badge{display:inline-flex;align-items:center;gap:9px;padding:7px 15px;border-radius:999px;border:1px solid var(--line);background:rgba(62,222,111,.06);font-size:13px;font-weight:600;color:var(--brand-lt);margin-bottom:24px}
-  .hero-badge .pdot{width:8px;height:8px;border-radius:50%;background:var(--brand);box-shadow:0 0 0 0 rgba(62,222,111,.6);animation:ping 2s infinite}
-  @keyframes ping{0%{box-shadow:0 0 0 0 rgba(62,222,111,.5)}70%{box-shadow:0 0 0 10px rgba(62,222,111,0)}100%{box-shadow:0 0 0 0 rgba(62,222,111,0)}}
-  .hero h1{font-size:clamp(38px,5.2vw,62px);font-weight:900;letter-spacing:-.035em;line-height:1.04}
-  .hero p.lead{color:var(--muted);font-size:clamp(17px,2vw,20px);max-width:560px;margin:22px 0 32px}
-  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
-  .hero-meta{display:flex;align-items:center;gap:12px;margin-top:34px;color:var(--muted);font-size:14px}
-  .hero-meta .av{width:38px;height:38px;border-radius:50%;object-fit:cover;object-position:50% 14%;border:1.5px solid rgba(62,222,111,.5)}
-  .hero-meta b{color:var(--ink)}
-  /* opportunity map card */
-  .map-card{background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(135deg,rgba(62,222,111,.5),rgba(33,184,115,.1)) border-box;border:1.5px solid transparent;border-radius:20px;padding:26px;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 60px rgba(62,222,111,.06)}
-  .map-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
-  .map-head .t{font-weight:800;font-size:16px}
-  .map-head .t small{display:block;font-size:12px;color:var(--muted);font-weight:500;margin-top:2px}
-  .map-live{font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--brand);background:rgba(62,222,111,.1);border:1px solid rgba(62,222,111,.25);padding:5px 10px;border-radius:999px}
-  .map-row{padding:14px 0;border-bottom:1px solid var(--line)}
-  .map-row:last-child{border-bottom:0}
-  .map-row .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
-  .map-row .lbl{font-weight:700;font-size:14px;display:flex;align-items:center;gap:9px}
-  .map-row .lbl .dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
-  .map-row .imp{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand)}
-  .map-row .op{font-size:12.5px;color:var(--muted);margin-bottom:9px}
-  .map-bar{height:7px;border-radius:99px;background:#202022;overflow:hidden}
-  .map-bar i{display:block;height:100%;width:0;border-radius:99px;background:var(--grad);transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+  .hero{padding:72px 0 84px}
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:54px;align-items:center}
+  @media(max-width:860px){.hero-grid{grid-template-columns:1fr;gap:40px}}
+  .hero h1{margin:14px 0 0}
+  .hero .lead{margin-top:20px;max-width:30ch}
+  .hero .cred{margin-top:18px;font-size:15.5px;color:var(--muted);max-width:46ch}
+  .hero .cred b{color:var(--ink);font-weight:600}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+  /* headshot */
+  .shot{position:relative}
+  .shot-ph{aspect-ratio:4/5;border-radius:20px;background:
+      radial-gradient(120% 90% at 70% 0,rgba(62,222,111,.12),transparent 55%),
+      linear-gradient(160deg,#fff,#ececef);
+      border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+      box-shadow:0 40px 80px rgba(14,14,16,.10);overflow:hidden}
+  .shot-ph .bpmark{width:64px;height:64px;opacity:.9}
+  .shot-ph .ph-label{font-family:var(--mono);font-size:12px;color:var(--muted)}
+  .shot-ph .ph-dim{font-family:var(--mono);font-size:11px;color:#a6a6ac}
+  .shot-cap{display:flex;align-items:center;gap:10px;margin-top:16px;font-size:14px;color:var(--muted)}
+  .shot-cap .bpmark{width:24px;height:24px;flex:none}
+  .shot-cap b{color:var(--ink);font-weight:600}
 
-  /* CREDIBILITY STRIP */
-  .creds{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--bg-2);padding:26px 0}
-  .creds-row{display:flex;flex-wrap:wrap;gap:14px 30px;align-items:center;justify-content:center}
-  .cred{display:flex;align-items:center;gap:9px;color:#cfd1d3;font-size:14px;font-weight:600;white-space:nowrap}
-  .cred svg{color:var(--brand);flex-shrink:0}
+  /* PROBLEM */
+  .problem{background:var(--ink);color:var(--paper)}
+  .problem .eyebrow{color:var(--mint)}
+  .problem h2{margin:12px 0 18px;max-width:18ch}
+  .problem h2 .mint{color:var(--mint)}
+  .problem p{color:#c9c9cd;font-size:clamp(17px,2.2vw,21px);max-width:60ch;line-height:1.5}
+  .problem .resolve{color:var(--paper);font-weight:600;margin-top:18px}
 
-  /* SHIFT (problem vs delivered) */
-  .shift-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:50px}
-  @media(max-width:780px){.shift-grid{grid-template-columns:1fr}}
-  .shift-card{border-radius:var(--radius);padding:30px;border:1px solid var(--line)}
-  .shift-card.bad{background:var(--panel)}
-  .shift-card.good{background:radial-gradient(120% 90% at 100% 0%,rgba(62,222,111,.09),transparent 55%),var(--panel-2);border-color:rgba(62,222,111,.3)}
-  .shift-card h3{font-size:14px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:18px;font-weight:800}
-  .shift-card.bad h3{color:var(--muted-2)}.shift-card.good h3{color:var(--brand)}
-  .shift-card ul{list-style:none;display:flex;flex-direction:column;gap:13px}
-  .shift-card li{display:flex;gap:11px;align-items:flex-start;font-size:15px;color:#d4d6d8}
-  .shift-card li svg{flex-shrink:0;margin-top:3px}
-  .shift-card.bad li svg{color:#6b6c6e}.shift-card.good li svg{color:var(--brand)}
+  /* DOORS */
+  .doors-head{text-align:center;max-width:44ch;margin:0 auto}
+  .doors-head h2{margin-top:6px}
+  .doors-head p{margin-top:14px}
+  .doors{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;margin-top:52px}
+  @media(max-width:880px){.doors{grid-template-columns:1fr;max-width:560px;margin-inline:auto}}
+  .door{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;transition:box-shadow .25s,transform .25s,border-color .25s;display:flex;flex-direction:column}
+  .door:hover{box-shadow:0 20px 44px rgba(14,14,16,.09);transform:translateY(-3px)}
+  .door.open{border-color:var(--ink);box-shadow:0 24px 50px rgba(14,14,16,.12)}
+  .door-name{font-size:21px;font-weight:800;letter-spacing:-.01em}
+  .door-tag{font-family:var(--mono);font-size:13px;color:var(--green);margin-top:4px}
+  .door-scarcity{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:600;color:var(--ink);background:rgba(62,222,111,.14);border:1px solid rgba(62,222,111,.4);border-radius:999px;padding:6px 12px;align-self:flex-start;line-height:1.3}
+  .door-scarcity .dot{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none;box-shadow:0 0 0 0 rgba(22,163,74,.5);animation:pulse 2.2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(22,163,74,.5)}70%{box-shadow:0 0 0 7px rgba(22,163,74,0)}100%{box-shadow:0 0 0 0 rgba(22,163,74,0)}}
+  .door-foryou{margin-top:16px;font-size:14.5px;color:var(--ink)}
+  .door-foryou b{font-weight:700}
+  .door-sum{margin-top:10px;font-size:14.5px;color:var(--muted);line-height:1.5}
+  .door-toggle{margin-top:18px;display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;background:var(--soft);border:0;border-radius:11px;padding:12px 15px;font-family:inherit;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;transition:.2s}
+  .door-toggle:hover{background:#e3e3e6}
+  .door-toggle .chev{transition:transform .3s;flex:none}
+  .door.open .door-toggle .chev{transform:rotate(180deg)}
+  .door-panel{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.2,.7,.2,1)}
+  .door.open .door-panel{max-height:1400px}
+  .door-panel-inner{padding-top:22px}
+  .panel-h{font-family:var(--mono);font-size:11px;color:var(--green);margin:0 0 12px;letter-spacing:.04em}
+  .door ol.steps{list-style:none;counter-reset:s;display:flex;flex-direction:column;gap:14px;margin-bottom:22px}
+  .door ol.steps li{counter-increment:s;position:relative;padding-left:34px;font-size:14px;color:var(--muted);line-height:1.5}
+  .door ol.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:24px;height:24px;border-radius:7px;background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .door ol.steps li b{color:var(--ink);font-weight:700}
+  .door ul.gets{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:24px}
+  .door ul.gets li{position:relative;padding-left:26px;font-size:14px;color:var(--ink);line-height:1.45}
+  .door ul.gets li::before{content:"";position:absolute;left:0;top:7px;width:9px;height:9px;border-radius:2px;background:var(--mint);border:1px solid var(--green)}
+  .door .door-cta{margin-top:auto}
+  .door .door-cta .btn{margin-top:18px}
 
-  /* TEAM SELECTOR (centerpiece) */
-  .teams{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-top:44px}
-  .tab{display:flex;align-items:center;gap:11px;padding:16px 20px;border-radius:14px;background:var(--panel);border:1px solid var(--line);cursor:pointer;transition:.25s;flex:1;min-width:230px;text-align:left;color:var(--ink);font-family:inherit}
-  .tab:hover{border-color:rgba(62,222,111,.4)}
-  .tab.active{border-color:transparent;background:linear-gradient(var(--panel-2),var(--panel-2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 14px 34px rgba(62,222,111,.14)}
-  .tab .ti{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,rgba(62,222,111,.2),rgba(33,184,115,.1));border:1px solid rgba(62,222,111,.3);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
-  .tab .tt{font-weight:800;font-size:15.5px;letter-spacing:-.01em}
-  .tab .ts{font-size:12px;color:var(--muted);margin-top:2px}
-  .panel-wrap{margin-top:22px;background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:38px;min-height:340px;position:relative;overflow:hidden}
-  .panel{display:none;animation:fadeUp .5s cubic-bezier(.2,.7,.2,1)}
-  .panel.show{display:block}
-  @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  .panel-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
-  @media(max-width:820px){.panel-grid{grid-template-columns:1fr;gap:26px}}
-  .panel h3{font-size:clamp(24px,3vw,32px);font-weight:900;letter-spacing:-.02em;line-height:1.1}
-  .panel .psub{color:var(--muted);font-size:16px;margin-top:12px}
-  .panel .outcome{margin-top:24px;display:inline-flex;align-items:center;gap:10px;background:rgba(62,222,111,.08);border:1px solid rgba(62,222,111,.22);border-radius:12px;padding:13px 16px;font-size:14.5px;color:var(--brand-lt);font-weight:600}
-  .uc{list-style:none;display:flex;flex-direction:column;gap:14px}
-  .uc li{display:flex;gap:13px;align-items:flex-start;font-size:15.5px;color:#d8dadc;line-height:1.45}
-  .uc li .ck{flex-shrink:0;width:24px;height:24px;border-radius:7px;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.28);display:flex;align-items:center;justify-content:center;color:var(--brand);margin-top:1px}
-
-  /* ESTIMATOR */
-  .est{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:46px;background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-  @media(max-width:820px){.est{grid-template-columns:1fr}}
-  .est-controls{padding:36px}
-  .est-result{padding:36px;background:radial-gradient(130% 100% at 100% 0%,rgba(62,222,111,.1),transparent 60%),var(--panel-2);border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center}
-  @media(max-width:820px){.est-result{border-left:0;border-top:1px solid var(--line)}}
-  .est-controls h4{font-size:13px;color:var(--brand);text-transform:uppercase;letter-spacing:.12em;font-weight:800;margin-bottom:8px}
-  .seg{display:flex;gap:8px;margin:8px 0 28px}
-  .seg button{flex:1;padding:12px 8px;border-radius:11px;background:var(--bg);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13px;cursor:pointer;transition:.2s;font-family:inherit}
-  .seg button:hover{border-color:rgba(62,222,111,.4)}
-  .seg button.on{background:rgba(62,222,111,.1);border-color:var(--brand);color:var(--brand)}
-  .est-label{font-size:14px;color:var(--muted);font-weight:600;display:flex;justify-content:space-between;align-items:baseline;margin-bottom:12px}
-  .est-label b{color:var(--brand);font-size:17px;font-weight:900}
-  .est-range{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:99px;background:#202022;outline:none;cursor:pointer}
-  .est-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 0 0 4px rgba(62,222,111,.18),0 2px 8px rgba(0,0,0,.4)}
-  .est-range::-moz-range-thumb{width:22px;height:22px;border:0;border-radius:50%;background:var(--brand);cursor:pointer;box-shadow:0 0 0 4px rgba(62,222,111,.18)}
-  .est-ends{display:flex;justify-content:space-between;font-size:11px;color:var(--muted-2);margin-top:8px}
-  .est-note{font-size:12px;color:var(--muted-2);margin-top:26px;line-height:1.55}
-  .est-cap{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:800;margin-bottom:8px}
-  .est-big{font-size:clamp(48px,7vw,76px);font-weight:900;letter-spacing:-.04em;line-height:.95}
-  .est-big small{font-size:18px;color:var(--muted);font-weight:600;letter-spacing:0}
-  .est-subs{display:flex;gap:28px;margin:22px 0 26px;flex-wrap:wrap}
-  .est-subs .v{font-size:25px;font-weight:900;letter-spacing:-.02em}
-  .est-subs .l{font-size:12px;color:var(--muted);margin-top:2px}
-  .est-result .btn{align-self:flex-start}
-  @media(max-width:820px){.est-result .btn{align-self:stretch;justify-content:center}}
-
-  /* WHAT YOU GET FROM THE CALL */
-  .call-get{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin:4px 0 30px}
-  .call-get .g{display:flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-size:14px;color:#d4d6d8;font-weight:600}
-  .call-get .g svg{color:var(--brand);flex-shrink:0}
-
-  /* PROCESS */
-  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:52px;counter-reset:s}
-  @media(max-width:820px){.steps{grid-template-columns:1fr 1fr}}
-  @media(max-width:520px){.steps{grid-template-columns:1fr}}
-  .step{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px 24px;transition:.3s}
-  .step:hover{transform:translateY(-5px);border-color:rgba(62,222,111,.3)}
-  .step .num{font-size:13px;font-weight:900;color:var(--ink-on-green);background:var(--brand);width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-  .step h4{font-size:18px;font-weight:800;margin-bottom:8px;letter-spacing:-.01em}
-  .step p{color:var(--muted);font-size:14px}
-
-  /* DELIVERABLES */
-  .deliver{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
-  @media(max-width:820px){.del-grid{grid-template-columns:1fr}}
-  .del{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;display:flex;gap:14px;align-items:flex-start;transition:.3s}
-  .del:hover{border-color:rgba(62,222,111,.3);transform:translateY(-4px)}
-  .del .ck{flex-shrink:0;width:30px;height:30px;border-radius:9px;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.28);display:flex;align-items:center;justify-content:center;color:var(--brand)}
-  .del b{font-size:16px;font-weight:800;display:block;margin-bottom:5px}
-  .del p{color:var(--muted);font-size:14px}
-
-  /* WHY ME */
-  .why-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:50px;align-items:center;margin-top:20px}
-  @media(max-width:840px){.why-grid{grid-template-columns:1fr;gap:36px;justify-items:center;text-align:center}}
-  .why-photo{position:relative;width:300px;height:300px;border-radius:24px;overflow:hidden;border:1.5px solid transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--grad) border-box;box-shadow:0 30px 80px rgba(0,0,0,.5),0 0 60px rgba(62,222,111,.14)}
-  .why-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 12%}
-  .why h2{font-size:clamp(28px,3.6vw,40px);font-weight:900;letter-spacing:-.02em;line-height:1.1}
-  .why p{color:#cdcfd1;font-size:16.5px;margin-top:18px}
-  .why p b{color:var(--ink)}
-  .why .sig{margin-top:22px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:10px;justify-content:inherit}
-  @media(max-width:840px){.why .sig{justify-content:center}}
-
-  /* ENGAGEMENTS */
-  .eng-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
-  @media(max-width:880px){.eng-grid{grid-template-columns:1fr}}
-  .eng{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:32px 28px;display:flex;flex-direction:column;transition:.3s}
-  .eng:hover{transform:translateY(-5px);border-color:rgba(62,222,111,.35)}
-  .eng.feat{background:linear-gradient(var(--panel-2),var(--panel-2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 30px 70px rgba(62,222,111,.12)}
-  .eng .tag{position:absolute;top:-12px;left:28px;background:var(--grad);color:var(--ink-on-green);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
-  .eng .en{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:800}
-  .eng .eh{font-size:21px;font-weight:900;margin:6px 0 10px;letter-spacing:-.01em}
-  .eng p{color:var(--muted);font-size:14.5px;flex:1}
-  .eng .ef{margin-top:20px;font-size:13px;color:var(--muted-2)}
-  .eng .btn{margin-top:20px;width:100%;justify-content:center}
-
-  /* FAQ */
-  .faq{max-width:820px;margin:48px auto 0}
-  .qa{border-bottom:1px solid var(--line)}
-  .qa button{width:100%;text-align:left;background:none;border:0;color:var(--ink);font-family:inherit;font-size:17px;font-weight:700;padding:22px 0;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px}
-  .qa .ic{flex-shrink:0;width:26px;height:26px;border-radius:8px;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--brand);transition:.3s;font-size:18px;line-height:1}
-  .qa.open .ic{background:var(--brand);color:var(--ink-on-green);border-color:var(--brand);transform:rotate(45deg)}
-  .qa .ans{max-height:0;overflow:hidden;transition:max-height .35s ease}
-  .qa .ans p{color:var(--muted);font-size:15.5px;padding:0 0 22px}
-
-  /* FINAL */
-  .final{text-align:center;overflow:hidden}
-  .final h2{font-size:clamp(32px,5vw,56px);font-weight:900;letter-spacing:-.03em;line-height:1.04}
-  .final p{color:var(--muted);font-size:19px;margin:18px auto 34px;max-width:600px}
-
-  footer{border-top:1px solid var(--line);padding:42px 0;color:var(--muted);font-size:14px}
-  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;align-items:center}
-  .foot-links{display:flex;gap:22px}.foot-links a:hover{color:var(--brand)}
-  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-  /* animated BP lockup (logo) */
-  .bplk{display:inline-flex;align-items:center;gap:12px}
-  .bplk-mark{height:auto;display:block;flex:none}
-  header .bplk-mark{width:34px}
-  footer .bplk-mark{width:40px}
-  .bplk-div{width:1px;flex:none;background:#2a2a2c}
-  header .bplk-div{height:30px}
-  footer .bplk-div{height:34px}
-  .bplk-txt{display:flex;flex-direction:column;font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif}
-  .bplk-name{font-weight:600;letter-spacing:-.02em;color:#F5F5F7;line-height:1.05;white-space:nowrap}
-  header .bplk-name{font-size:16px}
-  footer .bplk-name{font-size:18px}
-  .bplk-tag{font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#3EDE6F;white-space:nowrap;margin-top:4px}
-  header .bplk-tag{font-size:8px}
-  footer .bplk-tag{font-size:9px}
-  .bp-beat{transform-box:fill-box;transform-origin:center;animation:bpBeat 2.8s ease-in-out infinite}
-  .bp-glow{animation:bpGlow 3.4s ease-in-out infinite}
-  @keyframes bpBeat{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
-  @keyframes bpGlow{0%,100%{filter:drop-shadow(0 0 1px rgba(62,222,111,.45))}50%{filter:drop-shadow(0 0 5px rgba(62,222,111,.95))}}
-  @media(prefers-reduced-motion:reduce){.bp-beat,.bp-glow{animation:none}}
-
-  /* OS hero card */
-  .os-sot{display:flex;gap:13px;align-items:center;padding:14px 16px;border-radius:14px;background:radial-gradient(130% 130% at 0 0,rgba(62,222,111,.13),transparent 60%),var(--panel-2);border:1px solid rgba(62,222,111,.3);margin-bottom:4px}
-  .os-sot-ic{width:38px;height:38px;border-radius:11px;background:rgba(62,222,111,.14);border:1px solid rgba(62,222,111,.32);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
-  .os-sot b{font-size:14.5px;font-weight:800;display:block;line-height:1.2}
-  .os-sot span{font-size:12px;color:var(--muted)}
-  .os-flow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted-2);text-align:center;padding:10px 0 4px}
-  /* problem cards = del.bad */
-  .del.bad{cursor:default}
-  .del.bad:hover{transform:none;border-color:var(--line)}
-  .del.bad .ck{background:rgba(255,255,255,.03);border-color:var(--line);color:#7a7c7e}
-  /* 3-up phases */
-  .steps.three{grid-template-columns:repeat(3,1fr)}
-  @media(max-width:820px){.steps.three{grid-template-columns:1fr}}
-  .step .ph{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:800;margin-bottom:12px}
-  .step .wk{float:right;font-size:11px;color:var(--muted-2);font-weight:700;letter-spacing:.04em}
-  /* proof */
-  .proof-intro{max-width:720px;color:#cdcfd1;font-size:17px;margin-top:18px}
-  .proof-intro b{color:var(--ink)}
-  .fleet{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:30px}
-  @media(max-width:820px){.fleet{grid-template-columns:1fr 1fr}}
-  @media(max-width:520px){.fleet{grid-template-columns:1fr}}
-  .ag{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;transition:.3s}
-  .ag:hover{border-color:rgba(62,222,111,.3);transform:translateY(-3px)}
-  .ag .agi{width:34px;height:34px;border-radius:9px;background:rgba(62,222,111,.1);border:1px solid rgba(62,222,111,.26);display:flex;align-items:center;justify-content:center;color:var(--brand);margin-bottom:12px}
-  .ag b{font-size:14px;font-weight:800;display:block;margin-bottom:4px}
-  .ag p{font-size:12.5px;color:var(--muted);line-height:1.45}
-  .broke{margin-top:22px;background:radial-gradient(130% 100% at 0 0,rgba(62,222,111,.07),transparent 52%),var(--panel);border:1px solid var(--line);border-left:3px solid var(--brand);border-radius:16px;padding:30px 32px}
-  .broke .bl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--brand);font-weight:800;margin-bottom:14px}
-  .broke p{color:#cdcfd1;font-size:16px;margin-bottom:14px;max-width:780px}
+  /* PROOF */
+  .proof{background:var(--ink);color:var(--paper)}
+  .proof .eyebrow{color:var(--mint)}
+  .proof h2{margin:12px 0 0;max-width:20ch}
+  .proof h2 .mint{color:var(--mint)}
+  .proof-lead{margin-top:22px;max-width:62ch;color:#c9c9cd;font-size:17px;line-height:1.6}
+  .proof-lead b{color:var(--paper);font-weight:600}
+  .broke{margin-top:30px;background:#0b0b0d;border:1px solid #26262b;border-left:3px solid var(--mint);border-radius:14px;padding:26px 28px;max-width:760px}
+  .broke .lbl{font-family:var(--mono);font-size:12px;color:var(--mint);margin-bottom:12px}
+  .broke p{font-size:14.5px;color:#cdcdd2;line-height:1.65;margin-bottom:14px}
   .broke p:last-child{margin-bottom:0}
-  .broke .rule{color:var(--ink);font-weight:700}
-  .results{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 26px;margin-top:30px}
-  @media(max-width:780px){.results{grid-template-columns:1fr}}
-  .results li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:#d4d6d8}
-  .results li svg{color:var(--brand);flex-shrink:0;margin-top:3px}
-  /* offer ladder format line */
-  .eng .fmt{font-size:12px;color:var(--brand);font-weight:700;margin-top:14px;letter-spacing:.01em}
-  /* about */
-  .about-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:46px;align-items:center;margin-top:20px}
-  @media(max-width:840px){.about-grid{grid-template-columns:1fr;gap:34px;justify-items:center;text-align:center}}
-  .about-grid p{color:#cdcfd1;font-size:16.5px;margin-top:16px}
-  .about-grid p b{color:var(--ink)}
+  .broke .rule{color:var(--paper);font-weight:600}
+  .results{margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:14px 30px;max-width:820px;list-style:none}
+  @media(max-width:680px){.results{grid-template-columns:1fr}}
+  .results li{position:relative;padding-left:26px;font-size:14.5px;color:#d4d4d9;line-height:1.5}
+  .results li::before{content:"";position:absolute;left:0;top:8px;width:8px;height:8px;border-radius:50%;background:var(--mint)}
 
-  /* PROBLEM — before/after "the brain" graphic */
-  .splitg{display:grid;grid-template-columns:1fr 48px 1fr;align-items:stretch;margin-top:50px;background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden;box-shadow:0 40px 90px rgba(0,0,0,.42)}
-  @media(max-width:860px){.splitg{grid-template-columns:1fr}}
-  .sg-side{display:flex;flex-direction:column;padding:30px 28px}
-  .sg-before{background:radial-gradient(120% 80% at 50% 0,rgba(239,109,109,.05),transparent 55%)}
-  .sg-after{background:radial-gradient(120% 80% at 50% 0,rgba(62,222,111,.08),transparent 55%);border-left:1px solid var(--line)}
-  @media(max-width:860px){.sg-after{border-left:0;border-top:1px solid var(--line)}}
-  .sg-tag{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:800}
-  .sg-before .sg-tag{color:#ef6d6d}
-  .sg-after .sg-tag{color:var(--brand)}
-  .sg-title{font-size:17px;font-weight:900;letter-spacing:-.01em;margin:6px 0 20px;color:var(--ink)}
-  .sg-arrow{display:flex;align-items:center;justify-content:center;color:var(--muted-2);background:var(--bg-2);border-left:1px solid var(--line);border-right:1px solid var(--line)}
-  @media(max-width:860px){.sg-arrow{border:0;padding:8px 0}.sg-arrow svg{transform:rotate(90deg)}}
-  /* BEFORE: isolated experiments */
-  .sg-people{flex:1;display:flex;flex-direction:column;justify-content:center;gap:12px;margin-bottom:14px}
-  .sg-person{display:flex;align-items:center;gap:12px;padding:13px 14px;border:1px dashed rgba(245,245,247,.15);border-radius:12px;background:rgba(255,255,255,.015)}
-  .sg-av{width:34px;height:34px;border-radius:50%;background:#1c1d1f;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted-2);flex-shrink:0}
-  .sg-person .nm{font-size:13.5px;font-weight:700;color:#dcdee0}
-  .sg-person .rl{font-size:11.5px;color:var(--muted-2);margin-top:1px}
-  .sg-spark{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:800;letter-spacing:.04em;color:#ef6d6d;background:rgba(239,109,109,.08);border:1px solid rgba(239,109,109,.26);border-radius:999px;padding:4px 9px;white-space:nowrap}
-  .sg-spark svg{animation:sgFlick 1.9s ease-in-out infinite}
-  .sg-person:nth-child(2) .sg-spark svg{animation-delay:.5s}
-  .sg-person:nth-child(3) .sg-spark svg{animation-delay:1s}
-  @keyframes sgFlick{0%,100%{opacity:.3}50%{opacity:1}}
-  .sg-void{display:flex;align-items:center;gap:9px;font-size:11.5px;color:var(--muted-2);border:1px dashed rgba(239,109,109,.3);border-radius:11px;padding:12px 13px;line-height:1.35}
-  .sg-void svg{color:#ef6d6d;flex-shrink:0}
-  /* AFTER: brain flow */
-  .sg-flow{position:relative;flex:1;display:flex;flex-direction:column}
-  .sg-brain{position:relative;display:flex;align-items:center;gap:13px;padding:15px 16px;border-radius:14px;background:linear-gradient(var(--panel-2),var(--panel-2)) padding-box,var(--grad) border-box;border:1.5px solid transparent;box-shadow:0 0 38px rgba(62,222,111,.16);z-index:2}
-  .sg-brain-ic{width:42px;height:42px;border-radius:11px;background:rgba(62,222,111,.14);border:1px solid rgba(62,222,111,.34);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
-  .sg-brain b{font-size:14px;font-weight:900;display:block;letter-spacing:.02em}
-  .sg-brain span{font-size:11.5px;color:var(--muted);display:block;margin-top:1px}
-  .sg-step{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-2);font-weight:800;text-align:center;padding:2px 0 9px}
-  .sg-agents{display:flex;gap:8px}
-  .sg-agent{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;padding:11px 6px;border-radius:11px;background:var(--panel-2);border:1px solid var(--line)}
-  .sg-agent .ai{width:28px;height:28px;border-radius:8px;background:rgba(62,222,111,.1);border:1px solid rgba(62,222,111,.28);display:flex;align-items:center;justify-content:center;color:var(--brand)}
-  .sg-agent small{font-size:10px;color:#b9bbbd;font-weight:700}
-  .sg-gate{display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:12px;background:rgba(62,222,111,.07);border:1px solid rgba(62,222,111,.32);color:var(--brand-lt);font-size:12.5px;font-weight:700;line-height:1.25;animation:sgGate 2.6s ease-in-out infinite}
-  @keyframes sgGate{0%,100%{box-shadow:0 0 0 0 rgba(62,222,111,0)}50%{box-shadow:0 0 0 4px rgba(62,222,111,.1)}}
-  .sg-gate svg{flex-shrink:0}
-  .sg-teams{display:flex;flex-direction:column;gap:8px}
-  .sg-team{display:flex;align-items:center;gap:10px;padding:10px 13px;border-radius:11px;background:var(--panel-2);border:1px solid var(--line)}
-  .sg-team .tk{width:22px;height:22px;border-radius:7px;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.3);display:flex;align-items:center;justify-content:center;color:var(--brand);flex-shrink:0}
-  .sg-team .tk svg{animation:sgTick 2.8s ease-in-out infinite}
-  .sg-team:nth-child(2) .tk svg{animation-delay:.4s}
-  .sg-team:nth-child(3) .tk svg{animation-delay:.8s}
-  @keyframes sgTick{0%,100%{opacity:.5}50%{opacity:1}}
-  .sg-team .nm{font-size:13px;font-weight:700;color:#dcdee0}
-  .sg-team .sy{margin-left:auto;font-size:10px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.06em}
-  .sg-conn{height:17px;position:relative;flex:none}
-  .sg-conn::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:2px;margin-left:-1px;background:linear-gradient(rgba(62,222,111,.5),rgba(62,222,111,.14))}
-  .sg-conn::after{content:"";position:absolute;left:50%;top:-2px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:var(--brand-lt);box-shadow:0 0 10px 2px rgba(62,222,111,.7);animation:sgPulse 2.1s ease-in-out infinite}
-  .sg-conn.c2::after{animation-delay:.5s}
-  .sg-conn.c3::after{animation-delay:1s}
-  @keyframes sgPulse{0%{top:-3px;opacity:0}25%{opacity:1}75%{opacity:1}100%{top:15px;opacity:0}}
-  /* pains row */
-  .pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
-  @media(max-width:900px){.pain-grid{grid-template-columns:1fr 1fr}}
-  @media(max-width:540px){.pain-grid{grid-template-columns:1fr}}
-  .pain{padding:18px;border-radius:14px;background:var(--panel);border:1px solid var(--line);transition:.3s}
-  .pain:hover{border-color:rgba(62,222,111,.28);transform:translateY(-3px)}
-  .pain .pn{width:26px;height:26px;border-radius:8px;background:rgba(255,255,255,.04);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:#8a8c8e;font-weight:800;font-size:13px;margin-bottom:12px}
-  .pain b{font-size:14.5px;font-weight:800;display:block;margin-bottom:5px}
-  .pain p{font-size:13px;color:var(--muted);line-height:1.45}
-  @media(prefers-reduced-motion:reduce){.splitg *{animation:none!important}}
-  /* HOW — animated timeline */
-  .tl{position:relative;margin-top:62px}
-  .tl-track{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
-  @media(max-width:820px){.tl-track{grid-template-columns:1fr;gap:0}}
-  .tl-rail{position:absolute;top:35px;left:16.6%;right:16.6%;height:3px;background:var(--panel-3);border-radius:99px;overflow:hidden;z-index:0}
-  .tl-rail i{position:absolute;inset:0 auto 0 0;width:0;background:var(--grad);border-radius:99px;box-shadow:0 0 12px rgba(62,222,111,.7)}
-  .tl.in .tl-rail i{width:100%;transition:width 1.7s cubic-bezier(.4,0,.1,1) .15s}
-  @media(max-width:820px){.tl-rail{display:none}}
-  .tl-comet{position:absolute;top:30px;left:16.6%;width:12px;height:12px;border-radius:50%;background:var(--brand-lt);box-shadow:0 0 18px 5px rgba(62,222,111,.85);opacity:0;z-index:1}
-  .tl.in .tl-comet{animation:comet 1.7s cubic-bezier(.4,0,.1,1) .15s forwards}
-  @keyframes comet{0%{left:16.6%;opacity:1}92%{opacity:1}100%{left:83.4%;opacity:0}}
-  @media(max-width:820px){.tl-comet{display:none}}
-  .tl-step{position:relative;text-align:center}
-  @media(max-width:820px){.tl-step{text-align:left;padding:0 0 36px 64px}}
-  .tl-dot{width:72px;height:72px;margin:0 auto 22px;border-radius:50%;background:var(--panel);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--muted-2);position:relative;z-index:2;opacity:.45;transform:scale(.82);transition:opacity .55s,transform .55s,border-color .55s,color .55s,box-shadow .55s}
-  .tl-step.lit .tl-dot{opacity:1;transform:scale(1);color:var(--brand);border-color:transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,var(--grad) border-box;box-shadow:0 0 0 7px rgba(62,222,111,.07),0 16px 36px rgba(62,222,111,.24)}
-  .tl-step .rip{position:absolute;top:0;left:50%;width:72px;height:72px;margin-left:-36px;border-radius:50%;border:2px solid var(--brand);opacity:0;z-index:1}
-  .tl-step.lit .rip{animation:dotRipple 1.9s ease-out infinite}
-  @keyframes dotRipple{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.55);opacity:0}}
-  @media(max-width:820px){.tl-dot{position:absolute;left:0;top:0;width:48px;height:48px;margin:0}.tl-step .rip{display:none}}
-  .tl-step::before{content:"";display:none}
-  @media(max-width:820px){.tl-step::before{display:block;position:absolute;left:23px;top:50px;bottom:0;width:2px;background:var(--panel-3)}.tl-step:last-child::before{display:none}}
-  .tl-ph{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand);font-weight:800}
-  .tl-wk{color:var(--muted-2);margin-left:8px;letter-spacing:.04em}
-  .tl-step h4{font-size:21px;font-weight:900;letter-spacing:-.01em;margin:9px 0 9px}
-  .tl-step p{color:var(--muted);font-size:14.5px;max-width:300px;margin:0 auto;line-height:1.5}
-  @media(max-width:820px){.tl-step p{margin:0;max-width:none}}
+  /* PLAYBOOK opt-in */
+  .playbook .pb-card{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:48px;box-shadow:0 30px 70px rgba(14,14,16,.08)}
+  @media(max-width:840px){.playbook .pb-card{grid-template-columns:1fr;gap:34px;padding:32px}}
+  .playbook h2{font-size:clamp(26px,3.4vw,38px)}
+  .playbook .pb-sub{margin-top:14px;color:var(--muted);font-size:16.5px;line-height:1.55;max-width:46ch}
+  .pb-inside{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 26px}
+  .pb-inside li{font-size:12.5px;font-weight:600;color:var(--ink);background:var(--soft);border:1px solid var(--line);border-radius:999px;padding:7px 13px}
+  .pb-form{display:flex;gap:10px;flex-wrap:wrap}
+  .pb-form input{flex:1;min-width:220px;padding:15px 18px;border-radius:12px;background:var(--paper);border:1.5px solid var(--line);color:var(--ink);font-family:inherit;font-size:15px;transition:.2s}
+  .pb-form input::placeholder{color:#9a9aa0}
+  .pb-form input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(62,222,111,.18)}
+  .pb-note{font-size:12.5px;color:var(--muted);margin-top:12px}
+  .pb-ok{display:none;background:rgba(62,222,111,.12);border:1px solid rgba(62,222,111,.4);border-radius:13px;padding:18px 20px;font-size:15px;font-weight:600;color:var(--ink);line-height:1.45}
+  .pb-form.hide,.pb-note.hide{display:none}
+  .pb-ok.show{display:block}
+  /* playbook cover mock */
+  .pb-cover{position:relative;display:flex;justify-content:center}
+  .pb-cover .doc{position:relative;width:100%;max-width:300px;background:var(--ink);color:var(--paper);border-radius:16px;padding:30px 28px;box-shadow:0 34px 70px rgba(14,14,16,.3);transform:rotate(-1.6deg);transition:.45s cubic-bezier(.2,.7,.2,1);overflow:hidden}
+  .pb-cover:hover .doc{transform:rotate(0) translateY(-4px)}
+  .pb-cover .doc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--mint)}
+  .pb-cover .doc .k{font-family:var(--mono);font-size:10.5px;color:var(--mint);letter-spacing:.04em}
+  .pb-cover .doc h3{font-size:22px;line-height:1.15;margin:12px 0 16px;color:var(--paper)}
+  .pb-cover .doc .ln{height:8px;border-radius:4px;background:#2a2a2c;margin-bottom:8px}
+  .pb-cover .doc .ln.s{width:78%}.pb-cover .doc .ln.xs{width:52%}
+  .pb-cover .doc .free{margin-top:18px;display:inline-flex;align-items:center;gap:7px;font-family:var(--mono);font-size:11px;color:#cdcdd2}
+  .pb-badge{position:absolute;top:-14px;right:4px;background:var(--mint);color:var(--ink);font-size:11px;font-weight:800;letter-spacing:.04em;padding:8px 14px;border-radius:999px;transform:rotate(4deg);box-shadow:0 12px 28px rgba(62,222,111,.4);z-index:2}
 
-  /* PROOF — case study opt-in */
-  .cs{display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center;margin-top:48px;background:linear-gradient(var(--panel),var(--panel)) padding-box,linear-gradient(135deg,rgba(62,222,111,.55),rgba(33,184,115,.08)) border-box;border:1.5px solid transparent;border-radius:24px;padding:46px;box-shadow:0 44px 100px rgba(0,0,0,.5),0 0 70px rgba(62,222,111,.07)}
-  @media(max-width:880px){.cs{grid-template-columns:1fr;gap:36px;padding:30px}}
-  .cs h3{font-size:clamp(25px,3.2vw,35px);font-weight:900;letter-spacing:-.02em;line-height:1.1}
-  .cs .lede{color:#cdcfd1;font-size:16px;margin-top:15px;line-height:1.55}
-  .cs .lede b{color:var(--ink)}
-  .cs-list{list-style:none;display:flex;flex-direction:column;gap:11px;margin:22px 0 26px}
-  .cs-list li{display:flex;gap:11px;align-items:flex-start;font-size:14.5px;color:#d8dadc;line-height:1.45}
-  .cs-list li svg{color:var(--brand);flex-shrink:0;margin-top:2px}
-  .cs-form{display:flex;gap:10px;flex-wrap:wrap}
-  .cs-form.hide{display:none}
-  .cs-form input{flex:1;min-width:210px;padding:15px 18px;border-radius:12px;background:var(--bg);border:1px solid var(--line);color:var(--ink);font-family:inherit;font-size:15px;transition:.2s}
-  .cs-form input::placeholder{color:var(--muted-2)}
-  .cs-form input:focus{outline:none;border-color:var(--brand);box-shadow:0 0 0 3px rgba(62,222,111,.15)}
-  .cs-form button{white-space:nowrap}
-  .cs-note{font-size:12.5px;color:var(--muted-2);margin-top:13px;display:flex;align-items:center;gap:7px}
-  .cs-note.hide{display:none}
-  .cs-success{display:none;background:rgba(62,222,111,.08);border:1px solid rgba(62,222,111,.3);border-radius:14px;padding:20px 22px;color:var(--brand-lt);font-size:15.5px;font-weight:700;align-items:flex-start;gap:13px;line-height:1.4}
-  .cs-success.show{display:flex}
-  .cs-success svg{flex-shrink:0;margin-top:1px}
-  .cs-cover{position:relative;display:flex;justify-content:center}
-  .cs-badge{position:absolute;top:-14px;right:6px;background:var(--grad);color:var(--ink-on-green);font-size:11px;font-weight:900;letter-spacing:.05em;padding:8px 14px;border-radius:999px;box-shadow:0 12px 30px rgba(62,222,111,.4);transform:rotate(4deg);z-index:3}
-  .cs-doc{position:relative;width:100%;max-width:330px;background:linear-gradient(160deg,#16181a,#0c0d0f);border:1px solid var(--line);border-radius:16px;padding:28px 26px 26px;box-shadow:0 34px 76px rgba(0,0,0,.6);overflow:hidden;transform:rotate(-1.6deg);transition:.45s cubic-bezier(.2,.7,.2,1)}
-  .cs-cover:hover .cs-doc{transform:rotate(0) translateY(-5px);box-shadow:0 44px 90px rgba(0,0,0,.65),0 0 50px rgba(62,222,111,.12)}
-  .cs-doc::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad)}
-  .cs-doc .tag{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--brand);font-weight:800}
-  .cs-doc h5{font-size:20px;font-weight:900;letter-spacing:-.01em;line-height:1.18;margin:11px 0 18px}
-  .cs-doc .ln{height:9px;border-radius:4px;background:#202225;margin-bottom:9px}
-  .cs-doc .ln.s{width:82%}.cs-doc .ln.xs{width:54%}
-  .cs-doc .seal{margin-top:18px;display:flex;align-items:center;gap:8px;font-size:12px;color:var(--muted);font-weight:600}
-  .cs-doc .seal svg{color:var(--brand);flex-shrink:0}
-  /* mobile nav (hamburger) — phones only; desktop/larger screens unchanged */
-  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:38px;padding:8px 9px;background:none;border:0;cursor:pointer;flex:none}
-  .nav-toggle span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s ease,opacity .2s ease}
-  .site-nav.open .nav-toggle span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .site-nav.open .nav-toggle span:nth-child(2){opacity:0}
-  .site-nav.open .nav-toggle span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-  @media(max-width:600px){
-    h1,h2,h3,h4{text-wrap:balance}
-    h1 br,h2 br,h3 br{display:none}
-    .hero h1{font-size:30px;line-height:1.08}
-    h2.section-title{font-size:26px;line-height:1.14}
-    .nav-toggle{display:flex}
-    .site-links{position:absolute;top:100%;left:0;right:0;z-index:5;flex-direction:column;align-items:stretch;gap:0;background:#0c0c0e;border-bottom:1px solid var(--line);box-shadow:0 24px 44px rgba(0,0,0,.55);padding:6px 0;max-height:0;overflow:hidden;opacity:0;visibility:hidden;transition:max-height .3s ease,opacity .25s ease}
-    .site-nav.open .site-links{max-height:75vh;opacity:1;visibility:visible}
-    .site-links a{font-size:15.5px;font-weight:600;padding:14px 24px;width:100%}
-    .site-links a.active{color:var(--brand)}
-    /* SalesAi secondary pill: scroll instead of overflowing the viewport */
-    .subnav{max-width:calc(100vw - 28px);overflow-x:auto;overflow-y:hidden;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-    .subnav::-webkit-scrollbar{display:none}
-  }
+  /* ABOUT */
+  .about-grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:50px;align-items:center}
+  @media(max-width:820px){.about-grid{grid-template-columns:1fr;gap:34px;text-align:center;justify-items:center}}
+  .about-shot{width:260px;max-width:100%;aspect-ratio:1/1;border-radius:20px;background:radial-gradient(120% 90% at 70% 0,rgba(62,222,111,.12),transparent 55%),linear-gradient(160deg,#fff,#ececef);border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;box-shadow:0 30px 60px rgba(14,14,16,.1)}
+  .about-shot .bpmark{width:48px;height:48px}
+  .about-shot .ph-label{font-family:var(--mono);font-size:11px;color:var(--muted)}
+  .about p{font-size:16.5px;color:var(--ink);line-height:1.6;margin-top:16px}
+  .about p:first-of-type{margin-top:18px}
+  .about .signoff{margin-top:18px;font-family:var(--mono);font-size:14px;color:var(--green)}
+
+  /* FINAL CTA */
+  .final{text-align:center}
+  .final h2{max-width:20ch;margin:8px auto 0}
+  .final .lead{margin:16px auto 0;max-width:50ch}
+  .final-offers{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:34px}
+  .final-offers .btn{min-width:170px;justify-content:center}
+  .final-alt{margin-top:26px;font-size:15px;color:var(--muted)}
+  .final-alt a{color:var(--green);font-weight:600;border-bottom:1px solid rgba(22,163,74,.3)}
+  .final-alt a:hover{border-color:var(--green)}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--paper);padding:56px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:start}
+  @media(max-width:720px){.foot-top{grid-template-columns:1fr;gap:28px}}
+  .foot-brand{display:flex;align-items:center;gap:12px}
+  .foot-brand .bpmark{width:34px;height:34px}
+  .foot-brand b{font-weight:700;font-size:16px}
+  .foot-brand .sub{font-family:var(--mono);font-size:11px;color:var(--mint);letter-spacing:.08em;margin-top:2px;display:block}
+  .foot-social{display:flex;gap:14px;margin-top:16px}
+  .foot-social a{width:38px;height:38px;border-radius:10px;border:1px solid #2a2a2c;display:flex;align-items:center;justify-content:center;color:#cdcdd2;transition:.2s}
+  .foot-social a:hover{color:var(--ink);background:var(--mint);border-color:var(--mint)}
+  .foot-optin{max-width:340px}
+  .foot-optin label{font-size:13px;color:#bdbdc2;display:block;margin-bottom:10px;font-weight:600}
+  .foot-optin .pb-form input{background:#0b0b0d;border-color:#2a2a2c;color:var(--paper)}
+  .foot-optin .pb-form input::placeholder{color:#74747a}
+  .foot-optin .pb-ok{background:rgba(62,222,111,.12);border-color:#2a5a3a;color:var(--paper)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;margin-top:42px;padding-top:24px;border-top:1px solid #26262b;font-size:13px;color:#9a9aa0}
+  .foot-bottom .tagline{font-family:var(--mono);color:var(--mint)}
 </style>
 </head>
 <body>
-<div id="progress"></div>
 
-<header id="hdr">
-  <div class="wrap site-nav">
-    <a href="/" class="site-brand"><span class="bplk"><svg class="bplk-mark" viewBox="3.70 2.45 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brandon Poplstein, The AI-native operator"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#F5F5F7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><g class="bp-beat"><g class="bp-glow"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#3EDE6F"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#3EDE6F"></path></g></g></g></svg><span class="bplk-div"></span><span class="bplk-txt"><span class="bplk-name">Brandon Poplstein</span><span class="bplk-tag">The AI-native operator</span></span></span></a>
-    <nav class="site-links">
+<!-- ============ NAV ============ -->
+<header>
+  <div class="wrap nav">
+    <a href="/" aria-label="Brandon Poplstein — home">
+      <svg class="lockup" viewBox="0 0 360 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brandon Poplstein, The AI-native operator">
+        <svg x="6" y="20" width="56" height="56" viewBox="3.70 2.45 30 30" fill="none"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#0E0E10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#16A34A"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#16A34A"></path></g></svg>
+        <line x1="82" y1="30" x2="82" y2="66" stroke="#d6d6d8" stroke-width="1"></line>
+        <text x="98" y="46" font-family="Inter, system-ui, sans-serif" font-size="25" font-weight="600" letter-spacing="-0.5" fill="#0E0E10">Brandon Poplstein</text>
+        <text x="99" y="66" font-family="Inter, system-ui, sans-serif" font-size="11" font-weight="600" letter-spacing="2.4" fill="#3EDE6F">THE AI-NATIVE OPERATOR</text>
+      </svg>
+    </a>
+    <nav class="nav-links">
       <a href="/">About</a>
       <a href="/salesai">SalesAi</a>
       <a href="/consulting" class="active">Consulting</a>
@@ -459,316 +249,343 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <section class="hero">
-  <div class="dotgrid"></div>
-  <div class="aurora"><div class="blob b1"></div><div class="blob b2"></div></div>
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-badge"><span class="pdot"></span> The AI-Native Operating System</div>
-        <h1>I install the AI-native operating system <span class="grad-text">I run at my own company.</span></h1>
-        <p class="lead">Agents in the loop. The logistics automated. Your team trained to run it. In 6 to 8 weeks I build a working AI-native operating system inside your business, not another strategy deck, and hand you the keys.</p>
-        <div class="hero-cta">
-          <a href="https://calendly.com/brandon-poplstein/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a discovery call &nbsp;&rarr;</a>
-          <a href="#how" class="btn btn-ghost">See how it works</a>
-        </div>
-        <div class="hero-meta">
-          <img class="av" src="assets/brandon-headshot.png" alt="Brandon Poplstein" />
-          <div>Brandon Poplstein · <b>Founder, SalesAI</b> · The AI-native operator</div>
-        </div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow reveal">// the AI-native operating system</span>
+      <h1 class="reveal">Three ways to go AI-native.</h1>
+      <p class="lead reveal">Learn the system, get the blueprint, or have it built with you.</p>
+      <p class="cred reveal">I've built multiple AI companies, including <b>SalesAI</b>. I run them on the same AI-native operating system I install for other teams.</p>
+      <div class="hero-cta reveal">
+        <a href="#cards" class="btn btn-mint" data-scroll>See the three ways</a>
+        <a href="#playbook" class="btn btn-ghost" data-scroll>Get the free playbook</a>
       </div>
-      <div>
-        <div class="map-card" id="osCard">
-          <div class="map-head"><div class="t">The AI-Native OS<small>What gets installed in 6 to 8 weeks</small></div><span class="map-live">&#9679; Live</span></div>
-          <div class="os-sot">
-            <span class="os-sot-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 2 9 5-9 5-9-5 9-5Z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></span>
-            <div><b>One system your team runs on</b><span>Source of truth &rarr; agents in the loop &rarr; guardrails</span></div>
+    </div>
+    <div class="shot reveal">
+      <!-- HEADSHOT PLACEHOLDER — replace this <div class="shot-ph"> with:
+           <img src="assets/brandon-headshot.png" alt="Brandon Poplstein" style="width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px"> -->
+      <div class="shot-ph" role="img" aria-label="Headshot placeholder">
+        <svg class="bpmark" viewBox="3.70 2.45 30 30" fill="none" aria-hidden="true"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#0E0E10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#16A34A"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#16A34A"></path></g></svg>
+        <span class="ph-label">Headshot</span>
+        <span class="ph-dim">replace · assets/headshot</span>
+      </div>
+      <div class="shot-cap">
+        <svg class="bpmark" viewBox="3.70 2.45 30 30" fill="none" aria-hidden="true"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#0E0E10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#16A34A"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#16A34A"></path></g></svg>
+        <span><b>Brandon Poplstein</b> · The AI-native operator</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="problem">
+  <div class="wrap">
+    <span class="eyebrow reveal">the problem</span>
+    <h2 class="reveal">AI is stuck at <span class="mint">scattered experiments</span> that never become how you operate.</h2>
+    <p class="reveal">Everyone is prompting on their own and getting their own results. There's no single source of truth for agents to act on, and no shared way to keep a human in the loop where it counts.</p>
+    <p class="resolve reveal">Any of the three ways below moves you out of that.</p>
+  </div>
+</section>
+
+<!-- ============ THREE DOORS ============ -->
+<section id="cards">
+  <div class="wrap">
+    <div class="doors-head">
+      <span class="eyebrow reveal">start where you are</span>
+      <h2 class="reveal">Three doors, one operating system</h2>
+      <p class="lead reveal">Start where you are: learn it, plan it, or have it built.</p>
+    </div>
+    <div class="doors">
+
+      <!-- Card A — OS Workshop -->
+      <article class="door reveal">
+        <div class="door-name">OS Workshop</div>
+        <div class="door-tag">Learn it.</div>
+        <p class="door-foryou"><b>For you if</b> you or your team is experimenting with AI on its own and you want one shared way to think, plus a real place to start.</p>
+        <p class="door-sum">A private, one-on-one or team-facing intensive that teaches the operating model behind incorporating AI into your everyday processes, and sends you or your team off with the framework to use it.</p>
+        <button class="door-toggle" aria-expanded="false" aria-controls="panel-workshop">
+          <span class="toggle-label">How it works + what you get</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="door-panel" id="panel-workshop" role="region" aria-label="OS Workshop details" aria-hidden="true">
+          <div class="door-panel-inner">
+            <p class="panel-h">How it works</p>
+            <ol class="steps">
+              <li><b>Intake.</b> A short questionnaire on your tools and workflows, so the session is about your operation, not a generic deck.</li>
+              <li><b>The session.</b> Half-day, or two 90-minute blocks, private to you or your team: the brain, the agent fleet, the orchestration layer, the guardrails, and then we map your first agent live.</li>
+              <li><b>You keep it.</b> A recording, the framework and playbook, and a shortlist of the highest-value agents for you to build first.</li>
+            </ol>
+            <p class="panel-h">What you walk away with</p>
+            <ul class="gets">
+              <li>A shared mental model across your whole process.</li>
+              <li>A framework and playbook they keep and reuse.</li>
+              <li>A shortlist of your own first agents to build.</li>
+              <li>A clear-eyed view of what breaks, and how to gate agents so it doesn't.</li>
+            </ul>
           </div>
-          <div class="os-flow">&mdash; the install &mdash;</div>
-          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>One source of truth</span><span class="imp">Installed</span></div><div class="op">Your decisions in one place agents can operate on</div><div class="map-bar"><i data-w="100"></i></div></div>
-          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>Agents in the loop</span><span class="imp">Installed</span></div><div class="op">1 to 2 real workflows doing meaningful work in production</div><div class="map-bar"><i data-w="94"></i></div></div>
-          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>Guardrails &amp; gating</span><span class="imp">Installed</span></div><div class="op">Autonomy scaled to consequence, safe by default</div><div class="map-bar"><i data-w="88"></i></div></div>
-          <div class="map-row"><div class="top"><span class="lbl"><span class="dot"></span>Your team, trained</span><span class="imp">Installed</span></div><div class="op">A runbook so you own and extend it without me</div><div class="map-bar"><i data-w="96"></i></div></div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CREDIBILITY -->
-<div class="creds">
-  <div class="wrap creds-row">
-    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Founder, SalesAI</div>
-    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> I operate this system daily</div>
-    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> One source of truth, agents in the loop</div>
-    <div class="cred"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Capability transfer, not dependency</div>
-  </div>
-</div>
-
-<!-- THE PROBLEM -->
-<section id="problem">
-  <div class="wrap">
-    <span class="eyebrow reveal">The problem</span>
-    <h2 class="section-title reveal" style="margin-top:10px">AI is everywhere in the conversation. <br> And nowhere in your <span class="grad-text">operation.</span></h2>
-    <p class="section-sub reveal">Most teams trying to go AI-native get stuck between two dead ends: AI in pockets, one-off experiments that never reach the whole team, or a pile of disconnected tools that don't talk to each other. Either way, the work that should be automated still happens by hand.</p>
-    <div class="splitg reveal">
-      <div class="sg-side sg-before">
-        <div class="sg-tag">Today</div>
-        <div class="sg-title">AI in pockets</div>
-        <div class="sg-people">
-          <div class="sg-person"><span class="sg-av"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><div class="nm">Operations</div><div class="rl">Built a one-off automation</div></div><span class="sg-spark"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg> NOT SHARED</span></div>
-          <div class="sg-person"><span class="sg-av"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><div class="nm">Customer Success</div><div class="rl">Has their own prompt in a doc</div></div><span class="sg-spark"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg> NOT SHARED</span></div>
-          <div class="sg-person"><span class="sg-av"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span><div><div class="nm">Product</div><div class="rl">Ran a side experiment, never shipped</div></div><span class="sg-spark"><svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg> NOT SHARED</span></div>
+        <div class="door-cta">
+          <a class="btn btn-ink btn-block" href="https://calendly.com/brandon-poplstein/os-workshop-discovery-call" target="_blank" rel="noopener">Book a discovery call</a>
         </div>
-        <div class="sg-void"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg> No shared source of truth, so no one can build on, iterate, or share what works.</div>
-      </div>
-      <div class="sg-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></div>
-      <div class="sg-side sg-after">
-        <div class="sg-tag">The AI-Native OS</div>
-        <div class="sg-title">One brain, shared by the whole team</div>
-        <div class="sg-flow">
-          <div class="sg-brain"><span class="sg-brain-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg></span><div><b>THE BRAIN</b><span>A single source of truth everyone works from</span></div></div>
-          <div class="sg-conn c1"></div>
-          <div class="sg-step">Agents &amp; sub-agents run skills</div>
-          <div class="sg-agents"><div class="sg-agent"><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2v6h-6"/><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M3 22v-6h6"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/></svg></span><small>Sync</small></div><div class="sg-agent"><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg></span><small>Update</small></div><div class="sg-agent"><span class="ai"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 20 9-9-3-3-9 9v3z"/><path d="M16 5l3 3"/></svg></span><small>Draft</small></div></div>
-          <div class="sg-conn c2"></div>
-          <div class="sg-gate"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-1.5a4 4 0 0 0-4-4H6.5a4 4 0 0 0-4 4V21"/><circle cx="9" cy="7" r="4"/><path d="m15.5 11.5 2 2 4-4"/></svg> A human approves anything that updates a live process or data source</div>
-          <div class="sg-conn c3"></div>
-          <div class="sg-teams"><div class="sg-team"><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="nm">Product</span><span class="sy">In sync</span></div><div class="sg-team"><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="nm">Customer Success</span><span class="sy">In sync</span></div><div class="sg-team"><span class="tk"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><span class="nm">Operations</span><span class="sy">In sync</span></div></div>
+      </article>
+
+      <!-- Card B — OS Advisory -->
+      <article class="door reveal">
+        <div class="door-name">OS Advisory</div>
+        <div class="door-tag">Plan it.</div>
+        <p class="door-foryou"><b>For you if</b> you or your team can build, but you want the right architecture up front and a sounding board so you build it right the first time.</p>
+        <p class="door-sum">The blueprint for your AI-native operating system, plus a direct line to an operator who runs one, while you do the building.</p>
+        <button class="door-toggle" aria-expanded="false" aria-controls="panel-advisory">
+          <span class="toggle-label">How it works + what you get</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="door-panel" id="panel-advisory" role="region" aria-label="OS Advisory details" aria-hidden="true">
+          <div class="door-panel-inner">
+            <p class="panel-h">How it works</p>
+            <ol class="steps">
+              <li><b>Blueprint sprint</b> (1 to 2 weeks). I diagnose your workflows and the systems you run on, design the full architecture (brain, fleet, orchestration, guardrails, SOPs), and hand you a sequenced roadmap.</li>
+              <li><b>Operator-on-call</b> (optional, monthly). Async access to me for the decisions that matter, plus a monthly working session, while you build.</li>
+            </ol>
+            <p class="panel-h">What you walk away with</p>
+            <ul class="gets">
+              <li>A complete system architecture designed for your stack.</li>
+              <li>A sequenced build roadmap: what to build first, second, third, and why.</li>
+              <li>A second set of eyes on the expensive decisions, before they reach production.</li>
+              <li>A structure that enables you to build it right the first time, skipping the costly trial and error.</li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="pain-grid">
-      <div class="pain reveal"><span class="pn">1</span><b>AI stuck in pockets</b><p>Your people already experiment with AI on their own. It never gets standardized into how the team actually operates.</p></div>
-      <div class="pain reveal"><span class="pn">2</span><b>Tools that don't talk</b><p>A pile of disconnected tools, with work flowing by hand between them. Nothing is connected end to end.</p></div>
-      <div class="pain reveal"><span class="pn">3</span><b>No single source of truth</b><p>There's nothing in one place for an agent to act on. The knowledge that should compound still lives in people's heads.</p></div>
-      <div class="pain reveal"><span class="pn">4</span><b>The fear underneath</b><p>Even if you deployed agents, nothing stops one from silently changing something your team treats as canonical.</p></div>
+        <div class="door-cta">
+          <a class="btn btn-ink btn-block" href="https://calendly.com/brandon-poplstein/os-workshop-discovery-call" target="_blank" rel="noopener">Book a discovery call</a>
+        </div>
+      </article>
+
+      <!-- Card C — OS Install (gated + scarce) -->
+      <article class="door reveal">
+        <div class="door-name">OS Install</div>
+        <div class="door-tag">Have it built.</div>
+        <!-- EDITABLE: keep the "Currently booking" month current -->
+        <div class="door-scarcity"><span class="dot"></span>I take 2 to 3 builds per month. Currently booking <span id="booking-month">August</span>.</div>
+        <p class="door-foryou"><b>For you if</b> you're early in bringing AI into your business and you want the system built with you and handed over, not figured out alone.</p>
+        <p class="door-sum">I embed with your team for 6 to 8 weeks and build a working AI-native operating system inside your business, then train your team to run it.</p>
+        <button class="door-toggle" aria-expanded="false" aria-controls="panel-install">
+          <span class="toggle-label">How it works + what you get</span>
+          <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="door-panel" id="panel-install" role="region" aria-label="OS Install details" aria-hidden="true">
+          <div class="door-panel-inner">
+            <p class="panel-h">How it works</p>
+            <ol class="steps">
+              <li><b>Strategy call.</b> A few quick questions when you book, then a 30-minute call to confirm fit and scope before we commit. No separate application to fill out.</li>
+              <li><b>Diagnose</b> (Week 1). We map your workflows and the systems you run on, pick the highest-value loops, and define one clear success metric.</li>
+              <li><b>Build</b> (Weeks 2 to 6). We stand up the brain, build 1 to 2 agent workflows into production, wire the orchestration layer across your tools, and put the guardrails in place, together with your people.</li>
+              <li><b>Transfer</b> (Weeks 7 to 8). We train your team to use it, keep the source of truth updated, and keep a human in the loop. You get the SOPs and the runbook, and then I get out of the way.</li>
+            </ol>
+            <p class="panel-h">What you walk away with</p>
+            <ul class="gets">
+              <li>A working AI-native operating system, live in production, not a slide deck.</li>
+              <li>1 to 2 real agent workflows doing meaningful work behind guardrails.</li>
+              <li>The full system installed: the brain, the agent fleet, the orchestration layer, the guardrails, and the SOPs.</li>
+              <li>A team trained to own and extend it without me.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="door-cta">
+          <a class="btn btn-ink btn-block" href="https://calendly.com/brandon-poplstein/os-install-discovery-call" target="_blank" rel="noopener">Book a strategy call</a>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- THE OUTCOME -->
-<section class="deliver" id="outcome">
+<!-- ============ PROOF ============ -->
+<section class="proof" id="proof">
   <div class="wrap">
-    <span class="eyebrow reveal">What you walk away with</span>
-    <h2 class="section-title reveal" style="margin-top:10px">Not a strategy deck. <br> A <span class="grad-text">working system,</span> transferred.</h2>
-    <div class="del-grid">
-      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>A working AI-native OS</b><p>Being used by your team every day, not sitting on a slide deck. The system, actually running.</p></div></div>
-      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>The brain</b><p>A single source of truth your agents operate on. One place the whole team trusts.</p></div></div>
-      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>An agent fleet</b><p>1 to 2 real agent workflows, narrow and single-purpose, doing meaningful work in your business.</p></div></div>
-      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>An orchestration layer</b><p>Guides the fleet to work across the systems you already run your business on, so one decision propagates everywhere.</p></div></div>
-      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>Guardrails + human-in-the-loop</b><p>Agents can't silently change anything your team treats as canonical. Speed where it's cheap, friction where it's expensive.</p></div></div>
-      <div class="del reveal"><span class="ck"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></span><div><b>SOPs + a trained team</b><p>So you own, update, and extend the system without me. Capability transfer, not dependency.</p></div></div>
+    <span class="eyebrow reveal">proof</span>
+    <h2 class="reveal">I don't advise on this.<br><span class="mint">I operate it.</span></h2>
+    <p class="proof-lead reveal">I run product at an AI company on top of a fleet of agents I built myself. My thinking lives in one place, and the agents read it: they keep every tool my team uses in sync, turn decisions into tickets, keep the docs current, and even draft my published writing from the week's real work. I spend my time on judgment instead of logistics. When I install this for a company, I'm not handing over a theory. <b>I'm transferring the system I depend on every day, including the parts I had to fix the hard way.</b></p>
+
+    <div class="broke reveal">
+      <div class="lbl">// what broke</div>
+      <p>Early on I gave a sync agent too much autonomy, and it confidently pushed half-formed notes to a surface my whole team reads as truth. Later, a different agent quietly edited a live shared document nobody asked it to touch. Nothing it wrote was even wrong, which is the unsettling part.</p>
+      <p class="rule">The rule I now build everything on, and install for every client: an agent never writes to a trusted, shared surface without explicit permission. It can draft, it can stage, it can suggest. It cannot silently change a thing the team treats as canonical.</p>
+      <p>That is the difference between an AI demo and an AI system in production. Knowing where to put the gates is most of the job.</p>
     </div>
+
+    <ul class="results reveal">
+      <li>A decision written once now propagates to every tool automatically. The copy-paste tax is gone.</li>
+      <li>The wiki and roadmap stay current without anyone maintaining them by hand.</li>
+      <li>I walk into planning with an agent-drafted breakdown to react to, instead of a blank page to fill.</li>
+      <li>Agents move fast where it's cheap and pause for a human where it's expensive, so nothing canonical gets silently changed.</li>
+      <li>My hours moved off logistics and onto judgment: what to build, why, and what to say no to.</li>
+    </ul>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
+<!-- ============ FREE RESOURCE (opt-in) ============ -->
+<section class="playbook" id="playbook">
   <div class="wrap">
-    <span class="eyebrow reveal">How it works</span>
-    <h2 class="section-title reveal" style="margin-top:10px">A fixed-scope install. <br> Three phases, <span class="grad-text">6 to 8 weeks.</span></h2>
-    <p class="section-sub reveal">Embedded part-time with your team, built into your real tools and your real work, so the knowledge transfers as we go. One clear success metric. Fixed scope, fixed price.</p>
-    <div class="tl" id="timeline">
-      <div class="tl-rail"><i></i></div>
-      <div class="tl-comet"></div>
-      <div class="tl-track">
-        <div class="tl-step"><span class="rip"></span><div class="tl-dot"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"></circle><path d="m21 21-4.3-4.3"></path></svg></div><div class="tl-ph">Phase 1<span class="tl-wk">Week 1</span></div><h4>Diagnose</h4><p>We map your real workflows and the systems you run your business on, find the highest-leverage loops to automate, and define one clear success metric. You get a prioritized plan before we build anything.</p></div>
-        <div class="tl-step"><span class="rip"></span><div class="tl-dot"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.3 2.3-2.6-.7-.7-2.6 2.3-2.3Z"></path></svg></div><div class="tl-ph">Phase 2<span class="tl-wk">Weeks 2&ndash;6</span></div><h4>Build</h4><p>We stand up the brain (your source of truth), build 1 to 2 agent workflows into production, wire the orchestration layer across your systems, and put the guardrails in place behind human-in-the-loop gates. Built with your people, not in a vacuum.</p></div>
-        <div class="tl-step"><span class="rip"></span><div class="tl-dot"><svg width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="m10.8 12.2 8.2-8.2"></path><path d="m16 6 2.5 2.5"></path><path d="m13.5 8.5 2 2"></path></svg></div><div class="tl-ph">Phase 3<span class="tl-wk">Weeks 7&ndash;8</span></div><h4>Transfer</h4><p>We train your team to use it, keep the source of truth updated, and keep a human in the loop so agents never silently change anything canonical. We hand over the SOPs and the runbook, then I hand you the keys and get out of the way.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROOF -->
-<section id="proof" class="teams">
-  <div class="wrap">
-    <span class="eyebrow reveal">The proof</span>
-    <h2 class="section-title reveal" style="margin-top:10px">Don't take my word for it. <br> <span class="grad-text">Read the whole system.</span></h2>
-    <p class="section-sub reveal">I wrote up my own AI-native operation as a complete case study: the exact system behind OS Install, running in production every day. Before you let me install it in your company, see it for yourself.</p>
-    <div class="cs reveal">
+    <div class="pb-card reveal">
       <div>
-        <h3>The exact AI-native system I run, documented end to end.</h3>
-        <p class="lede">This isn't a teaser. It's the real architecture: <b>the brain, the agent fleet, the orchestration layer across every system, and the guardrails</b> that keep agents from quietly changing anything, plus the honest account of what broke in production and how I fixed it. If you're going to run AI-native, this is the blueprint, the same one I install for clients.</p>
-        <ul class="cs-list">
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>The full architecture: the brain, the agent fleet, the orchestration layer, the guardrails</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Every agent and its one job, all reading from a single source of truth</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>The orchestration layer that propagates one decision across every system, automatically</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>The one rule that stops an agent from silently changing anything canonical</li>
-          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>What actually broke in production, the exact fix, and the results</li>
+        <span class="eyebrow">free resource</span>
+        <h2 style="margin-top:12px">Not ready to talk? Steal my playbook.</h2>
+        <p class="pb-sub">The exact operating model I use to run an AI-native company, free. Drop your email and I'll send over <b style="color:var(--ink)">The AI-Native Operating System Playbook</b>.</p>
+        <ul class="pb-inside">
+          <li>The brain</li><li>The agent fleet</li><li>The orchestration layer</li><li>Guardrails + a human in the loop</li><li>SOPs</li><li>Your first agent</li>
         </ul>
-        <form class="cs-form" id="csForm" novalidate>
-          <input type="email" id="csEmail" placeholder="you@company.com" autocomplete="email" aria-label="Your work email" required />
-          <button type="submit" class="btn btn-primary">Send me the case study &nbsp;&rarr;</button>
+        <!-- TODO: set the form action + JS FORM_ENDPOINT to your email tool (ConvertKit / MailerLite / Beehiiv) -->
+        <form class="pb-form" action="REPLACE_WITH_EMAIL_TOOL_FORM_ACTION" method="post" novalidate>
+          <input type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Your email" required />
+          <button type="submit" class="btn btn-mint">Get the free playbook</button>
         </form>
-        <div class="cs-note" id="csNote"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--brand)"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path></svg> The real system, not a sales pitch. No spam, unsubscribe anytime.</div>
-        <div class="cs-success" id="csSuccess"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="m9 12 2 2 4-4"></path><circle cx="12" cy="12" r="9"></circle></svg><div>You're in. The case study is on its way to your inbox.<span style="display:block;color:var(--muted);font-weight:400;margin-top:5px;font-size:13.5px">If it's not there in a couple of minutes, check spam and add me to your contacts.</span></div></div>
+        <p class="pb-note">No spam. The playbook, then occasional notes on building AI-native. Unsubscribe anytime.</p>
+        <div class="pb-ok" role="status">You're in. Check your inbox for the playbook in a minute. (If it's not there, check spam.)</div>
       </div>
-      <div class="cs-cover reveal">
-        <span class="cs-badge">FREE &middot; BY REQUEST</span>
-        <div class="cs-doc">
-          <div class="tag">Case study</div>
-          <h5>How I Built an AI-Native Operating System to Run My Own Company</h5>
+      <div class="pb-cover">
+        <span class="pb-badge">FREE</span>
+        <div class="doc">
+          <div class="k">// playbook</div>
+          <h3>The AI-Native Operating System</h3>
           <div class="ln"></div><div class="ln"></div><div class="ln s"></div>
           <div class="ln" style="margin-top:16px"></div><div class="ln xs"></div>
-          <div class="seal"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 11 2 2 4-4"></path></svg> The system behind OS Install</div>
+          <div class="free">How to run a company on a fleet of agents</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- OFFER LADDER -->
-<section id="engagements">
-  <div class="wrap">
-    <span class="eyebrow reveal">The offer ladder</span>
-    <h2 class="section-title reveal" style="margin-top:10px">One transformation. <br> Three ways in.</h2>
-    <p class="section-sub reveal">Same operating model, at three readiness points. Pick the door that matches where your team is today.</p>
-    <div class="eng-grid">
-      <div class="eng reveal">
-        <div class="en">Teach &amp; enable</div>
-        <div class="eh">OS Workshop</div>
-        <p>A private, team-facing intensive that teaches the operating model: one source of truth, narrow agents, autonomy scaled to consequence, what breaks and how to gate it. Ships with a playbook your team keeps.</p>
-        <div class="fmt">Half-day or 2&times;90 min, company-private</div>
-        <div class="ef">Best for product &amp; ops teams who want to upskill fast.</div>
-        <a href="https://calendly.com/brandon-poplstein/30min" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Book a discovery call</a>
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <!-- HEADSHOT PLACEHOLDER (same image as hero) — replace this <div class="about-shot"> with:
+           <img src="assets/brandon-headshot.png" alt="Brandon Poplstein" style="width:260px;max-width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px"> -->
+      <div class="about-shot" role="img" aria-label="Headshot placeholder">
+        <svg class="bpmark" viewBox="3.70 2.45 30 30" fill="none" aria-hidden="true"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#0E0E10" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#16A34A"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#16A34A"></path></g></svg>
+        <span class="ph-label">Headshot</span>
       </div>
-      <div class="eng feat reveal">
-        <div class="tag">Flagship</div>
-        <div class="en">Build alongside</div>
-        <div class="eh">OS Install</div>
-        <p>A fixed-scope, embedded engagement. We build the agentic operating system with your team and train them to run it. Diagnose the workflows, stand up the source of truth and 1 to 2 agent workflows in production behind guardrails, then hand over the runbook.</p>
-        <div class="fmt">6 to 8 weeks, embedded part-time</div>
-        <div class="ef">Best for founders &amp; operators who want it running, not theorized.</div>
-        <a href="https://calendly.com/brandon-poplstein/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Book a discovery call</a>
-      </div>
-      <div class="eng reveal">
-        <div class="en">Advise &amp; architect</div>
-        <div class="eh">OS Advisory</div>
-        <p>For operators who can build it themselves but want the blueprint and a sounding board. A diagnosis, system architecture, and a sequenced roadmap, with optional on-call access and a monthly working session as your team builds.</p>
-        <div class="fmt">Blueprint sprint + optional retainer</div>
-        <div class="ef">Best for technical founders &amp; strong operators.</div>
-        <a href="https://calendly.com/brandon-poplstein/30min" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">Book a discovery call</a>
-      </div>
+    </div>
+    <div>
+      <span class="eyebrow reveal">about</span>
+      <p class="reveal">I'm Brandon Poplstein, and I build AI companies for a living.</p>
+      <p class="reveal">I've started multiple of them, including SalesAI, where I lead product. Somewhere along the way I stopped using AI like a fancy autocomplete and started running my actual operation on it: a team of agents I built myself, doing real work every day. One source of truth, narrow agents, a human in the loop where it counts.</p>
+      <p class="reveal">That system is what I now install for other founders and operators. I'm not an advisor theorizing about where this is headed. I run an AI-native company, and I show the work, including the parts that break.</p>
+      <p class="signoff reveal">What building actually looks like.</p>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="why">
+<!-- ============ FINAL CTA ============ -->
+<section class="final" id="contact">
   <div class="wrap">
-    <div class="about-grid">
-      <div style="display:flex;justify-content:center"><div class="why-photo"><img src="assets/brandon-headshot.png" alt="Brandon Poplstein" /></div></div>
-      <div>
-        <span class="eyebrow reveal">About Brandon</span>
-        <h2 class="reveal" style="margin-top:10px">The operator, not the analyst.</h2>
-        <p class="reveal">I'm Brandon Poplstein, founder of <b>SalesAI</b>, and I run an AI-native operation as my day job. A fleet of agents I built handles the logistics so I can spend my time on judgment. I'm not theorizing about where AI is going. I'm showing what building actually looks like.</p>
-        <p class="reveal">The principles I install for you, <b>one source of truth, narrow single-purpose agents, autonomy scaled to consequence,</b> are the ones I learned by running them in production, including the parts that broke. I take one to two installs at a time, so the work stays deep and never competes with the company I'm building.</p>
-        <div class="sig reveal"><span class="bdot" style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--brand)"></span> Brandon Poplstein · Founder, SalesAI · The AI-native operator</div>
-      </div>
+    <span class="eyebrow reveal">get started</span>
+    <h2 class="reveal">Not sure which fits? Book a call and we'll figure it out.</h2>
+    <p class="lead reveal">Pick the door that matches where you are, or just book a call and we'll find it together.</p>
+    <div class="final-offers reveal">
+      <a class="btn btn-ghost" href="https://calendly.com/brandon-poplstein/os-workshop-discovery-call" target="_blank" rel="noopener" aria-label="OS Workshop — book a discovery call">OS Workshop</a>
+      <a class="btn btn-ghost" href="https://calendly.com/brandon-poplstein/os-workshop-discovery-call" target="_blank" rel="noopener" aria-label="OS Advisory — book a discovery call">OS Advisory</a>
+      <a class="btn btn-ink" href="https://calendly.com/brandon-poplstein/os-install-discovery-call" target="_blank" rel="noopener" aria-label="OS Install — book a strategy call">OS Install</a>
     </div>
+    <p class="final-alt reveal">Not ready to talk? <a href="#playbook" data-scroll>Get the free playbook</a>. Prefer email? <a href="mailto:brandon@brandonpoplstein.com">brandon@brandonpoplstein.com</a>.</p>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="bg2" style="background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
-  <div class="wrap">
-    <span class="eyebrow reveal" style="text-align:center;display:block">Questions</span>
-    <h2 class="section-title reveal" style="margin-top:10px;text-align:center">The honest answers</h2>
-    <div class="faq">
-      <div class="qa"><button>Do you just advise, or actually build it? <span class="ic">+</span></button><div class="ans"><p>Both, and the building is the point. I set the direction, then we build 1 to 2 agent workflows into production with your team. I run an AI-native company for a living, so you get someone who has done the work, not diagrammed it.</p></div></div>
-      <div class="qa"><button>Will agents touch things we can't afford to get wrong? <span class="ic">+</span></button><div class="ans"><p>Only behind gates. The rule I build everything on: an agent never writes to a trusted, shared surface without explicit permission. It can draft, stage, and suggest freely. Autonomy is scaled to consequence, free where mistakes are cheap, gated where they're costly.</p></div></div>
-      <div class="qa"><button>We've tried AI before and it stalled. Why is this different? <span class="ic">+</span></button><div class="ans"><p>Because most AI stalls in the pilot. This is fixed-scope and ends with a system live in production and your team trained to run it. It's built into your real tools, with your people, so the knowledge transfers and it actually sticks.</p></div></div>
-      <div class="qa"><button>What do you need from us? <span class="ic">+</span></button><div class="ans"><p>One or two people from your team as build partners, a few hours a week each. The system is built into your real work, so light, consistent access beats a big time commitment.</p></div></div>
-      <div class="qa"><button>How many clients do you take? <span class="ic">+</span></button><div class="ans"><p>One to two at a time. This is selective by design, depth over volume, and it can't compete with the company I'm building. If your workflows are a fit, timing matters.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="contact" class="final">
-  <div class="aurora"><div class="blob b1" style="left:50%;transform:translateX(-50%);top:-120px;width:540px;opacity:.32"></div></div>
-  <div class="wrap">
-    <span class="eyebrow reveal">Next step</span>
-    <h2 class="reveal" style="margin-top:12px">Let's pressure-test <br> the fit.</h2>
-    <p class="reveal">A 30-minute discovery call. We'll see whether your workflows are a good match and name the first agent workflow worth building. If it's a fit, I take one to two installs at a time, so timing matters.</p>
-    <div class="call-get reveal">
-      <div class="g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Whether your workflows fit</div>
-      <div class="g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> The first agent worth building</div>
-      <div class="g"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> A clear next step, no pitch</div>
-    </div>
-    <a href="https://calendly.com/brandon-poplstein/30min" target="_blank" rel="noopener noreferrer" class="btn btn-primary reveal" style="font-size:17px;padding:16px 36px">Book a discovery call &nbsp;&rarr;</a>
-    <p class="reveal" style="font-size:14px;margin-top:18px">Prefer to write first? <a href="mailto:brandon@salesai.com" style="color:var(--brand);font-weight:600">brandon@salesai.com</a></p>
-  </div>
-</section>
-
+<!-- ============ FOOTER ============ -->
 <footer>
-  <div class="wrap foot">
-    <div class="site-brand"><span class="bplk"><svg class="bplk-mark" viewBox="3.70 2.45 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Brandon Poplstein, The AI-native operator"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#F5F5F7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><g class="bp-beat"><g class="bp-glow"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#3EDE6F"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#3EDE6F"></path></g></g></g></svg><span class="bplk-div"></span><span class="bplk-txt"><span class="bplk-name">Brandon Poplstein</span><span class="bplk-tag">The AI-native operator</span></span></span></div>
-    <div class="foot-links"><a href="/">About</a><a href="/salesai">SalesAi</a><a href="/blog">Blog</a><a href="mailto:brandon@salesai.com">Contact</a></div>
-    <div style="text-align:right"><div style="color:var(--brand);font-weight:600">What building actually looks like.</div><div style="margin-top:4px">&copy; 2026 Brandon Poplstein</div></div>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">
+          <svg class="bpmark" viewBox="3.70 2.45 30 30" fill="none" aria-hidden="true"><path d="M9 27.5 V5.5 H17 A6 6 0 0 1 17 17.5 H9" stroke="#F5F5F7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"></path><g transform="translate(18 19) scale(0.5)"><path d="M 6.447 0 C 2.892 0 0 2.882 0 6.425 L 0 8.753 L 15.217 8.753 L 15.217 23.918 L 17.553 23.918 C 21.108 23.918 24 21.036 24 17.494 L 24 0 L 6.447 0 Z M 17.895 21.231 L 17.895 6.084 L 2.696 6.084 C 2.869 4.173 4.487 2.672 6.447 2.672 L 21.319 2.672 L 21.319 17.494 C 21.319 19.449 19.812 21.059 17.895 21.231 Z" fill="#3EDE6F"></path><path d="M 10.186 13.787 C 9.067 12.703 7.589 12.104 6.027 12.104 C 5.998 12.104 5.97 12.104 5.941 12.104 C 4.345 12.126 2.854 12.765 1.744 13.902 C -0.55 16.255 -0.497 20.028 1.862 22.317 C 2.98 23.401 4.458 24 6.023 24 C 6.052 24 6.08 24 6.109 24 C 7.705 23.978 9.196 23.339 10.306 22.202 C 11.415 21.065 12.014 19.561 11.992 17.971 C 11.968 16.379 11.327 14.893 10.186 13.787 Z M 9.225 18.007 C 9.236 18.86 8.917 19.665 8.32 20.276 C 7.725 20.886 6.924 21.229 6.067 21.24 C 6.052 21.24 6.036 21.24 6.021 21.24 C 5.179 21.24 4.392 20.921 3.79 20.338 C 3.178 19.745 2.834 18.947 2.823 18.093 C 2.812 17.239 3.131 16.434 3.728 15.824 C 4.356 15.18 5.191 14.86 6.025 14.86 C 6.831 14.86 7.636 15.16 8.257 15.762 C 8.868 16.357 9.212 17.153 9.225 18.007 Z" fill="#3EDE6F"></path></g></svg>
+          <div><b>Brandon Poplstein</b><span class="sub">THE AI-NATIVE OPERATOR</span></div>
+        </div>
+        <div class="foot-social">
+          <!-- TODO: verify these social URLs -->
+          <a href="https://www.linkedin.com/in/brandonpoplstein" target="_blank" rel="noopener" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.06 3.77-2.06C20.4 8.64 22 10.5 22 14v7h-4v-6.2c0-1.48-.03-3.4-2.07-3.4-2.07 0-2.39 1.62-2.39 3.3V21H9z"/></svg></a>
+          <a href="https://x.com/brandonpoplstein" target="_blank" rel="noopener" aria-label="X"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2H21.5l-7.5 8.57L22.5 22h-6.9l-4.6-6.02L5.7 22H2.44l8-9.15L1.5 2h7.06l4.18 5.52zM17.1 20h1.8L7.04 3.9H5.1z"/></svg></a>
+        </div>
+      </div>
+      <div class="foot-optin">
+        <label for="foot-email">Get the playbook + the newsletter</label>
+        <!-- TODO: same email-tool action as above -->
+        <form class="pb-form" action="REPLACE_WITH_EMAIL_TOOL_FORM_ACTION" method="post" novalidate>
+          <input id="foot-email" type="email" name="email" placeholder="you@company.com" autocomplete="email" aria-label="Your email" required />
+          <button type="submit" class="btn btn-mint">Subscribe</button>
+        </form>
+        <div class="pb-ok" role="status">You're in. Check your inbox.</div>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Brandon Poplstein</span>
+      <span class="tagline">What building actually looks like.</span>
+    </div>
   </div>
 </footer>
 
 <script>
-const prog=document.getElementById('progress'),hdr=document.getElementById('hdr');
-addEventListener('scroll',()=>{const h=document.documentElement,sc=h.scrollTop/(h.scrollHeight-h.clientHeight);
-  prog.style.width=(sc*100)+'%';hdr.classList.toggle('scrolled',h.scrollTop>10);},{passive:true});
-document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{
-  const id=a.getAttribute('href');if(!id||id.length<2)return;const t=document.querySelector(id);if(!t)return;
-  e.preventDefault();const y=t.getBoundingClientRect().top+window.pageYOffset-64;window.scrollTo({top:Math.max(y,0),behavior:'smooth'});history.replaceState(null,'',id);});});
-const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.16});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el);});
-
-// OS card install bars
-const oc=document.getElementById('osCard');
-if(oc){const mo=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
-  oc.querySelectorAll('.map-bar i').forEach(b=>b.style.width=b.dataset.w+'%');mo.disconnect();}}),{threshold:.4});mo.observe(oc);}
-
-// faq accordion
-document.querySelectorAll('.qa').forEach(q=>{const btn=q.querySelector('button'),ans=q.querySelector('.ans');
-  btn.addEventListener('click',()=>{const open=q.classList.contains('open');
-    document.querySelectorAll('.qa').forEach(o=>{o.classList.remove('open');o.querySelector('.ans').style.maxHeight=null;});
-    if(!open){q.classList.add('open');ans.style.maxHeight=ans.scrollHeight+'px';}});});
-
-// animated timeline
-const tl=document.getElementById('timeline');
-if(tl){const to=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
-  tl.classList.add('in');
-  tl.querySelectorAll('.tl-step').forEach((st,i)=>setTimeout(()=>st.classList.add('lit'),260+i*560));
-  to.disconnect();}}),{threshold:.32});to.observe(tl);}
-
-// case study opt-in
+// ---- mobile nav toggle ----
 (function(){
-  const f=document.getElementById('csForm');if(!f)return;
-  const FORM_ENDPOINT=''; // set to a Formspree/ConvertKit POST URL for instant automated delivery
-  const em=document.getElementById('csEmail'),ok=document.getElementById('csSuccess'),note=document.getElementById('csNote');
-  function done(){f.classList.add('hide');if(note)note.classList.add('hide');ok.classList.add('show');ok.scrollIntoView({block:'nearest',behavior:'smooth'});}
-  f.addEventListener('submit',function(e){
-    e.preventDefault();
-    const v=(em.value||'').trim();
-    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){em.focus();em.style.borderColor='#ef6d6d';em.style.boxShadow='0 0 0 3px rgba(239,109,109,.15)';return;}
-    if(FORM_ENDPOINT){
-      fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({email:v,source:'consulting-case-study'})}).then(done).catch(done);
-    }else{
-      window.location.href='mailto:brandon@salesai.com?subject=Case%20study%20request%20%E2%80%94%20AI-Native%20OS&body='+encodeURIComponent('Please send the AI-Native Operating System case study to: '+v);
-      done();
-    }
-  });
-  em.addEventListener('input',function(){em.style.borderColor='';em.style.boxShadow='';});
-})();
-
-// mobile nav toggle
-(function(){
-  var nav=document.querySelector('.site-nav'), btn=nav&&nav.querySelector('.nav-toggle');
-  if(!nav||!btn)return;
+  var nav=document.querySelector('.nav'), btn=nav&&nav.querySelector('.nav-toggle');
+  if(!btn)return;
   function close(){nav.classList.remove('open');btn.setAttribute('aria-expanded','false');}
   btn.addEventListener('click',function(e){e.stopPropagation();var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');});
-  nav.querySelectorAll('.site-links a').forEach(function(a){a.addEventListener('click',close);});
+  nav.querySelectorAll('.nav-links a').forEach(function(a){a.addEventListener('click',close);});
   document.addEventListener('click',function(e){if(nav.classList.contains('open')&&!nav.contains(e.target))close();});
   window.addEventListener('resize',function(){if(window.innerWidth>600)close();});
+})();
+
+// ---- smooth scroll for in-page CTAs (with sticky-nav offset) ----
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var id=a.getAttribute('href'); if(!id||id.charAt(0)!=='#'||id.length<2)return;
+    var t=document.querySelector(id); if(!t)return;
+    e.preventDefault();
+    var y=t.getBoundingClientRect().top+window.pageYOffset-72;
+    window.scrollTo({top:Math.max(y,0),behavior:'smooth'});
+    history.replaceState(null,'',id);
+  });
+});
+
+// ---- reveal on scroll ----
+var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:.14});
+document.querySelectorAll('.reveal').forEach(function(el,i){el.style.transitionDelay=(i%3*60)+'ms';io.observe(el);});
+
+// ---- accordion cards (keyboard-accessible via native <button>) ----
+document.querySelectorAll('.door-toggle').forEach(function(btn){
+  var card=btn.closest('.door');
+  var panel=document.getElementById(btn.getAttribute('aria-controls'));
+  var label=btn.querySelector('.toggle-label');
+  btn.addEventListener('click',function(){
+    var open=card.classList.toggle('open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    panel.setAttribute('aria-hidden',open?'false':'true');
+    label.textContent=open?'Close':'How it works + what you get';
+  });
+});
+
+// ---- email opt-in forms ----
+// TODO: replace FORM_ENDPOINT (and each <form action> above) with your email tool's endpoint.
+// While empty, the form validates and shows the success state without sending.
+(function(){
+  var FORM_ENDPOINT='';
+  document.querySelectorAll('.pb-form').forEach(function(f){
+    var ok=f.parentNode.querySelector('.pb-ok');
+    var note=f.parentNode.querySelector('.pb-note');
+    var em=f.querySelector('input[type=email]');
+    function done(){f.classList.add('hide');if(note)note.classList.add('hide');if(ok)ok.classList.add('show');}
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var v=(em.value||'').trim();
+      if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)){em.focus();em.style.borderColor='#e0564f';return;}
+      if(FORM_ENDPOINT){
+        fetch(FORM_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify({email:v,source:'consulting-playbook'})}).then(done).catch(done);
+      } else { done(); }
+    });
+    em.addEventListener('input',function(){em.style.borderColor='';});
+  });
 })();
 </script>
 </body>
